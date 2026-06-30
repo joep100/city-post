@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CityPost — Same-day collection, next-day delivery across Dublin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Home-specific layout */
+    .hero { padding: 56px 40px 40px; position: relative; overflow: hidden; }
+    .hero-map {
+      position: absolute; top: -10px; bottom: -10px; right: -40px; width: 680px;
+      pointer-events: none; overflow: hidden; opacity: .9;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 14%, #000);
+      mask-image: linear-gradient(90deg, transparent, #000 14%, #000);
+    }
+    .hero-inner { position: relative; }
+    .hero h1 {
+      font-size: 124px; line-height: .88; letter-spacing: -0.04em;
+      font-weight: 800; margin: 20px 0 24px; max-width: 1100px;
+    }
+    .hero .blurb { font-size: 18px; color: var(--soft); max-width: 620px; margin: 0 0 20px; line-height: 1.5; font-weight: 600; }
+    .from-line { display: flex; align-items: baseline; gap: 12px; margin: 0 0 28px; }
+    .from-line .lbl { font-size: 15px; color: var(--soft); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+    .from-line .price { font-size: 56px; font-weight: 800; color: var(--accent); letter-spacing: -0.04em; line-height: 1; }
+    .from-line .unit { font-size: 15px; color: var(--muted); }
+
+    .booking-widget {
+      background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+      padding: 16px; display: grid; grid-template-columns: 1.2fr 1.2fr 1fr 1fr auto;
+      gap: 8px; align-items: stretch; max-width: 1100px;
+      box-shadow: 0 32px 80px -40px rgba(var(--accent-rgb), .4);
+    }
+    .bw-field { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
+    .bw-field .k { font-size: 10px; color: var(--soft); text-transform: uppercase; letter-spacing: .14em; font-weight: 600; }
+    .bw-field .v { font-size: 15px; font-weight: 600; margin-top: 4px; }
+    .bw-est { font-size: 12px; color: var(--soft); margin-top: 12px; font-family: var(--font-mono); }
+
+    .trust { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); display: flex; align-items: center; gap: 36px; flex-wrap: wrap; }
+    .trust .lbl { font-size: 11px; color: var(--muted); letter-spacing: .14em; text-transform: uppercase; font-weight: 600; }
+    .trust .name { font-size: 18px; font-weight: 700; color: var(--muted); letter-spacing: -0.01em; }
+
+    .stats { grid-template-columns: repeat(3, 1fr); }
+
+    .usp h2 { font-size: 56px; font-weight: 800; letter-spacing: -0.03em; margin: 12px 0 0; line-height: .98; max-width: 880px; }
+    .usp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 32px; }
+    .usp-card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 26px; position: relative; }
+    .usp-card .k { font-size: 11px; color: var(--muted); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    .usp-card h3 { font-size: 22px; font-weight: 700; color: var(--soft); letter-spacing: -0.01em; margin: 10px 0 16px; }
+    .usp-card.neg h3 { text-decoration: line-through; text-decoration-color: var(--muted); }
+    .usp-card ul li { font-size: 13px; color: var(--soft); line-height: 1.7; }
+    .usp-card.us { background: var(--accent); color: var(--bg); }
+    .usp-card.us .k { color: var(--bg); opacity: .8; }
+    .usp-card.us h3 { color: var(--bg); font-weight: 800; letter-spacing: -0.015em; margin: 10px 0 16px; text-decoration: none; line-height: 1.15; }
+    .usp-card.us ul li { font-size: 14px; color: var(--bg); line-height: 1.7; font-weight: 500; }
+    .us-badge { position: absolute; top: 18px; right: 18px; padding: 4px 10px; background: var(--bg); color: var(--accent); font-size: 10px; font-weight: 800; letter-spacing: .14em; border-radius: 4px; }
+
+    .how { display: grid; grid-template-columns: 1fr 380px; gap: 56px; }
+    .how h2 { font-size: 56px; line-height: 1; font-weight: 800; letter-spacing: -0.03em; margin: 14px 0 36px; }
+    .how h2 .sub { color: var(--soft); font-style: italic; font-weight: 500; }
+    .step { display: grid; grid-template-columns: 80px 1fr; gap: 24px; padding: 20px 0; border-top: 1px solid var(--line); align-items: baseline; }
+    .step .n { font-family: var(--font-mono); font-size: 32px; font-weight: 700; color: var(--accent); letter-spacing: -0.02em; }
+    .step .t { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; }
+    .step .b { font-size: 15px; color: var(--soft); margin-top: 6px; line-height: 1.55; }
+    .quote-card { margin-top: 36px; padding: 28px; background: var(--panel); border-radius: 14px; border: 1px solid var(--line); position: relative; }
+    .quote-badge { position: absolute; top: -8px; left: 22px; padding: 4px 10px; background: var(--accent); color: var(--bg); font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; border-radius: 4px; }
+    .quote-text { font-size: 22px; line-height: 1.35; font-weight: 500; letter-spacing: -0.01em; margin-top: 6px; }
+    .quote-who { margin-top: 18px; display: flex; align-items: center; gap: 12px; }
+    .avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--accent); color: var(--bg); display: flex; align-items: center; justify-content: center; font-weight: 800; }
+
+    /* Phone tracking card */
+    .phone-wrap { position: sticky; top: 90px; }
+    .phone { background: var(--panel); border: 1px solid var(--line); border-radius: 28px; padding: 8px; }
+    .phone-screen { background: var(--bg); border-radius: 22px; overflow: hidden; position: relative; }
+    .phone-map { height: 200px; position: relative; background: radial-gradient(circle at 40% 60%, rgba(var(--accent-rgb), .16), transparent 55%), #1a1a1a;
+      background-image: linear-gradient(rgba(var(--accent-rgb), .08) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--accent-rgb), .08) 1px, transparent 1px);
+      background-size: 24px 24px; }
+    .phone-status { position: absolute; top: 14px; left: 14px; padding: 6px 10px; background: var(--accent); color: var(--bg); border-radius: 6px; font-size: 11px; font-weight: 700; }
+    .phone-pid { position: absolute; top: 14px; right: 14px; font-family: var(--font-mono); font-size: 10px; color: var(--soft); }
+    .phone-body { padding: 18px; }
+    .phone-eta-row { display: flex; justify-content: space-between; align-items: baseline; }
+    .phone-eta-lbl { font-size: 11px; color: var(--soft); letter-spacing: .1em; text-transform: uppercase; }
+    .phone-eta { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; color: var(--accent); line-height: 1; }
+    .phone-driver { font-size: 13px; font-weight: 600; text-align: right; }
+    .phone-vehicle { font-size: 11px; color: var(--soft); text-align: right; }
+    .phone-progress { margin-top: 16px; height: 4px; background: #1a1a1a; border-radius: 2px; overflow: hidden; }
+    .phone-progress > div { width: 72%; height: 100%; background: var(--accent); }
+    .phone-stops { margin-top: 18px; }
+    .phone-stop { display: grid; grid-template-columns: 50px 14px 1fr; gap: 10px; padding: 10px 0; align-items: center; border-bottom: 1px solid var(--line); }
+    .phone-stop:last-child { border-bottom: none; }
+    .phone-stop .time { font-family: var(--font-mono); font-size: 11px; color: var(--soft); }
+    .phone-stop .bullet { width: 10px; height: 10px; border-radius: 50%; }
+    .phone-stop.done .bullet { background: var(--accent); border: 2px solid var(--accent); }
+    .phone-stop.pending .bullet { background: transparent; border: 2px solid var(--soft); }
+    .phone-stop.done .label { font-size: 13px; color: var(--ink); }
+    .phone-stop.pending .label { font-size: 13px; color: var(--soft); }
+
+    .tiers-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px; }
+    .tiers-head h2 { font-size: 40px; font-weight: 800; letter-spacing: -0.025em; }
+    .tiers-head .note { font-size: 13px; color: var(--soft); }
+    .tiers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .tier { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 22px; position: relative; }
+    .tier.featured { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+    .tier-flag { position: absolute; top: -10px; left: 14px; background: var(--accent); color: var(--bg); padding: 4px 10px; font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; border-radius: 4px; }
+    .tier.featured .tier-flag { background: var(--bg); color: var(--accent); }
+    .tier .name { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-top: 6px; }
+    .tier .blurb { font-size: 13px; color: var(--soft); margin-top: 4px; }
+    .tier.featured .blurb { color: var(--bg); opacity: .85; }
+    .tier .price { margin-top: 22px; font-size: 32px; font-weight: 800; letter-spacing: -0.03em; color: var(--accent); }
+    .tier.featured .price { color: var(--bg); }
+
+    .coverage-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 22px; }
+    .coverage-head h2 { font-size: 32px; font-weight: 800; letter-spacing: -0.02em; }
+    .coverage-head .v { font-family: var(--font-mono); font-size: 12px; color: var(--soft); }
+    .coverage { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+    .cov { padding: 12px 14px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; font-size: 13px; font-family: var(--font-mono); color: var(--ink); }
+    .cov .b { color: var(--accent); margin-right: 6px; }
+
+    .cta-strip { margin: 0 40px 40px; padding: 40px; background: var(--accent); color: var(--bg); border-radius: 18px; display: flex; justify-content: space-between; align-items: center; }
+    .cta-strip .k { font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; opacity: .7; }
+    .cta-strip .h { font-size: 48px; font-weight: 800; letter-spacing: -0.03em; margin-top: 8px; line-height: 1; }
+
+    @media (max-width: 860px) {
+      .hero { padding: 40px 20px; }
+      .hero h1 { font-size: 56px; }
+      .hero-map { display: none; }
+      .booking-widget { grid-template-columns: 1fr 1fr; }
+      .stats, .usp-grid, .how, .tiers, .coverage { grid-template-columns: 1fr; }
+      .coverage { grid-template-columns: 1fr 1fr; }
+      .usp h2, .how h2 { font-size: 36px; }
+      .cta-strip { margin: 0 20px 40px; flex-direction: column; gap: 20px; align-items: flex-start; }
+      .cta-strip .h { font-size: 32px; }
+      .tiers { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <a class="logo" href="index.html">
+      <span class="logo-mark"><span>&rsaquo;</span></span>
+      <span class="logo-word">CityPost</span>
+    </a>
+    <nav class="topnav">
+      <a href="index.html" class="active">Send a parcel</a>
+      <a href="pricing.html">Business</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="account.html">Track</a>
+      <a href="pricing.html">Help</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="signin" href="account.html">Sign in</a>
+      <a class="btn btn--accent btn--sm" href="booking.html">Send a parcel &rarr;</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-map" aria-hidden="true">
+      <svg viewBox="80 40 500 400" preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%;display:block">
+        <path d="M 560 40 Q 540 130 560 200 Q 580 270 555 340 Q 535 410 560 460" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity=".35" />
+        <text x="572" y="250" fill="var(--accent)" opacity=".3" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="2" transform="rotate(90 572 250)">DUBLIN BAY</text>
+        <path d="M 120 220 Q 250 235 360 210 Q 470 188 560 205" fill="none" stroke="var(--accent)" stroke-width="3" opacity=".28" />
+        <text x="140" y="212" fill="var(--accent)" opacity=".32" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="2">RIVER LIFFEY</text>
+        <path d="M 360 30 Q 130 45 100 240 Q 110 435 360 450" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="5 6" opacity=".5" />
+        <text x="250" y="436" fill="var(--accent)" opacity=".6" font-family="'JetBrains Mono', monospace" font-size="11" letter-spacing="2" font-weight="600">M50</text>
+        <g stroke="var(--accent)" stroke-width="1" opacity=".16" fill="none" stroke-dasharray="3 5">
+          <path d="M 250 150 L 360 175 L 470 150" />
+          <path d="M 250 250 L 380 245 L 500 250" />
+          <path d="M 360 175 L 380 245" />
+          <path d="M 330 320 L 380 390 L 470 400" />
+          <path d="M 210 340 L 330 320" />
+          <path d="M 150 110 L 250 150" />
+          <path d="M 430 95 L 470 150" />
+        </g>
+        <g id="map-nodes"></g>
+        <circle r="13" fill="var(--accent)" opacity=".15"><animateMotion dur="5s" repeatCount="indefinite" path="M 250 250 Q 320 200 360 175 T 470 150" /></circle>
+        <circle r="5" fill="var(--accent)" stroke="var(--bg)" stroke-width="2"><animateMotion dur="5s" repeatCount="indefinite" path="M 250 250 Q 320 200 360 175 T 470 150" /></circle>
+      </svg>
+    </div>
+
+    <div class="hero-inner">
+      <span class="pill">
+        <span class="dot dot--pulse"></span>
+        Live &middot; <span class="mono-num" id="live-count">247</span> parcels moving in Dublin right now
+      </span>
+
+      <h1>Collected same day.<br />Delivered <span class="accent">next day.</span></h1>
+
+      <p class="blurb">No post office queue. No next-day collection wait. Book before 2pm and we'll be at your door this afternoon — and you pick the collection and delivery slot that suits you.</p>
+
+      <div class="from-line">
+        <span class="lbl">Pricing from</span>
+        <span class="price">&euro;7.99</span>
+        <span class="unit">per parcel</span>
+      </div>
+
+      <div class="booking-widget">
+        <div class="bw-field"><div class="k">From</div><div class="v">D02 — Dame Street</div></div>
+        <div class="bw-field"><div class="k">To</div><div class="v">D15 — Castleknock</div></div>
+        <div class="bw-field"><div class="k">Parcel size</div><div class="v">Package</div></div>
+        <div class="bw-field"><div class="k">When</div><div class="v">Tomorrow</div></div>
+        <a class="btn btn--accent" href="booking.html" style="padding:0 28px;font-size:15px">Get price &rarr;</a>
+      </div>
+      <div class="bw-est">&rarr; Estimated <span class="accent">&euro;8.99</span> &middot; Collected today, delivered next working day</div>
+
+      <div class="trust">
+        <span class="lbl">Trusted by Dublin shops &rarr;</span>
+        <span class="name">Boojum</span>
+        <span class="name">Avoca</span>
+        <span class="name">Carraig</span>
+        <span class="name">Bewley's</span>
+        <span class="name">Sostrene</span>
+        <span class="name">Storyful</span>
+        <span class="name">Stable</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat"><div class="num">98.4%</div><div class="lbl">On-time, last 90 days</div></div>
+    <div class="stat"><div class="num">12,400</div><div class="lbl">Parcels every week</div></div>
+    <div class="stat"><div class="num">4.8 / 5</div><div class="lbl">Customer rating</div></div>
+  </div>
+
+  <!-- USP -->
+  <section class="section usp">
+    <div class="eyebrow">Why CityPost</div>
+    <h2>The only parcel service that <span class="accent">collects same day and delivers next day.</span></h2>
+    <div class="usp-grid">
+      <div class="usp-card neg">
+        <div class="k">An Post &middot; Registered</div>
+        <h3>Drive to the post office.</h3>
+        <ul>
+          <li>&#10007; You bring it. You queue.</li>
+          <li>&#10007; 9–5pm only &middot; closed Sundays</li>
+          <li>&#10007; ID required, manual paperwork</li>
+        </ul>
+      </div>
+      <div class="usp-card neg">
+        <div class="k">Overnight carriers</div>
+        <h3>Collected tomorrow. Maybe.</h3>
+        <ul>
+          <li>&#10007; Next-day collection at earliest</li>
+          <li>&#10007; 4-hour pickup windows</li>
+          <li>&#10007; Delivered the day after that</li>
+        </ul>
+      </div>
+      <div class="usp-card us">
+        <div class="us-badge">US</div>
+        <div class="k">CityPost</div>
+        <h3>We're at your door this afternoon.</h3>
+        <ul>
+          <li>&#10003; Book by 2pm &rarr; collected today</li>
+          <li>&#10003; Delivered tomorrow, AM or PM</li>
+          <li>&#10003; Tracked, photo on delivery, signed-for option</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW + TRACKING -->
+  <section class="section how">
+    <div>
+      <div class="eyebrow">How it works</div>
+      <h2>Three steps.<br /><span class="sub">No post office.</span></h2>
+
+      <div class="step">
+        <div class="n">01</div>
+        <div><div class="t">Book</div><div class="b">Add pickup + drop-off, pay. Done in under a minute, on any device.</div></div>
+      </div>
+      <div class="step">
+        <div class="n">02</div>
+        <div><div class="t">We collect today</div><div class="b">Book before 2pm and we're at your door this afternoon. No post office. No queue.</div></div>
+      </div>
+      <div class="step">
+        <div class="n">03</div>
+        <div><div class="t">Delivered tomorrow</div><div class="b">Tracked end-to-end. Photo on delivery. Receiver gets an SMS when we're 5 min away.</div></div>
+      </div>
+
+      <div class="quote-card">
+        <div class="quote-badge">4.8 &#9733; rated</div>
+        <div class="quote-text">"We send forty parcels a week from the shop. CityPost is the only courier that never makes me chase anything."</div>
+        <div class="quote-who">
+          <div class="avatar">AB</div>
+          <div><div style="font-size:14px;font-weight:600">Aoife Brennan</div><div style="font-size:12px;color:var(--soft)">Owner, Brennan &amp; Co &middot; Rathmines</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phone-wrap">
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="phone-map">
+            <svg width="100%" height="100%" style="position:absolute;inset:0" viewBox="0 0 360 200" preserveAspectRatio="none">
+              <path d="M 30 160 Q 120 80, 200 100 T 330 50" stroke="var(--accent)" stroke-width="3" fill="none" stroke-dasharray="6 4" />
+              <circle cx="30" cy="160" r="6" fill="var(--accent)" />
+              <circle cx="200" cy="100" r="7" fill="var(--ink)" stroke="var(--accent)" stroke-width="3" />
+              <circle cx="330" cy="50" r="6" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="2 2" />
+            </svg>
+            <div class="phone-status">&#9679; OUT FOR DELIVERY</div>
+            <div class="phone-pid">CP-94821-D</div>
+          </div>
+          <div class="phone-body">
+            <div class="phone-eta-row">
+              <div><div class="phone-eta-lbl">Arriving in</div><div class="phone-eta">12 min</div></div>
+              <div><div class="phone-driver">Eamon</div><div class="phone-vehicle">Cargo bike &middot; 142-D-EV</div></div>
+            </div>
+            <div class="phone-progress"><div></div></div>
+            <div class="phone-stops">
+              <div class="phone-stop done"><span class="time">8:14</span><span class="bullet"></span><span class="label">Picked up &middot; Dame St</span></div>
+              <div class="phone-stop done"><span class="time">8:42</span><span class="bullet"></span><span class="label">At Crumlin sorting hub</span></div>
+              <div class="phone-stop done"><span class="time">9:33</span><span class="bullet"></span><span class="label">Out for delivery with Eamon</span></div>
+              <div class="phone-stop pending"><span class="time">~9:55</span><span class="bullet"></span><span class="label">Castleknock &middot; drop-off</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIERS -->
+  <section class="section divider-top">
+    <div class="tiers-head">
+      <h2>Simple pricing. <span class="accent">Starts with the size.</span></h2>
+      <span class="note">No subscriptions. No hidden fees.</span>
+    </div>
+    <div class="tiers">
+      <div class="tier"><div class="name">Letter</div><div class="blurb">Max 500g &middot; A4 size</div><div class="price">&euro;7.99</div></div>
+      <div class="tier featured"><div class="tier-flag">Most popular</div><div class="name">Package</div><div class="blurb">Max 2kg &middot; 45&times;35&times;20cm</div><div class="price">&euro;8.99</div></div>
+      <div class="tier"><div class="name">Box</div><div class="blurb">Max 10kg &middot; 60&times;40&times;40cm</div><div class="price">&euro;9.99</div></div>
+      <div class="tier"><div class="name">Business</div><div class="blurb">10+ a week. Same per-parcel.</div><div class="price">Account</div></div>
+    </div>
+  </section>
+
+  <!-- COVERAGE -->
+  <section class="section divider-top">
+    <div class="coverage-head">
+      <h2>All 24 Dublin postal codes. <span class="accent">Plus the M50 ring.</span></h2>
+      <span class="v">COVERAGE/v2026.05</span>
+    </div>
+    <div class="coverage" id="coverage"></div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-strip">
+    <div>
+      <div class="k">Ready to send something?</div>
+      <div class="h">Book before 2pm. Collected today.</div>
+    </div>
+    <a class="btn btn--invert btn--lg" href="booking.html">Send a parcel &rarr;</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div>
+      <a class="logo" href="index.html"><span class="logo-mark"><span>&rsaquo;</span></span><span class="logo-word">CityPost</span></a>
+      <div class="tag">We collect today. We deliver tomorrow.</div>
+    </div>
+    <div class="col"><div class="col-title">Send</div><a href="booking.html">Parcels</a><a href="booking.html">Documents</a><a href="booking.html">Same-day</a><a href="pricing.html">Bulk &amp; API</a></div>
+    <div class="col"><div class="col-title">Business</div><a href="pricing.html">Account pricing</a><a href="pricing.html">API &amp; integrations</a><a href="pricing.html">Case studies</a><a href="pricing.html">Contact sales</a></div>
+    <div class="col"><div class="col-title">Company</div><a href="#">About</a><a href="#">Jobs</a><a href="#">Sustainability</a><a href="#">Press</a></div>
+    <div class="col"><div class="col-title">Help</div><a href="account.html">Track a parcel</a><a href="pricing.html">Pricing</a><a href="#">Contact</a><a href="pricing.html">FAQ</a></div>
+  </footer>
+  <div class="legal">&copy; 2026 CityPost Logistics Ltd. &middot; 23 Sir John Rogerson's Quay, Dublin 2 &middot; CRO 612 884</div>
+
+  <script>
+    // Live job counter — drifts around a baseline so it feels real-time.
+    (function () {
+      var el = document.getElementById('live-count');
+      setInterval(function () {
+        var n = parseInt(el.textContent, 10);
+        n = Math.max(220, Math.min(290, n + (Math.floor(Math.random() * 5) - 2)));
+        el.textContent = n;
+      }, 2200);
+    })();
+
+    // Hero map district nodes
+    (function () {
+      var districts = [
+        ['D7',250,150],['D1',360,175],['D3',470,150],['D9',430,95],['D15',150,110],
+        ['D8',250,250],['D2',380,245],['D4',500,250],['D6',330,320],['D12',210,340],
+        ['D14',380,390],['D24',200,430],['D18',470,400]
+      ];
+      var ns = 'http://www.w3.org/2000/svg';
+      var g = document.getElementById('map-nodes');
+      if (!g) return;
+      districts.forEach(function (d) {
+        var c1 = document.createElementNS(ns, 'circle');
+        c1.setAttribute('cx', d[1]); c1.setAttribute('cy', d[2]); c1.setAttribute('r', 3.5);
+        c1.setAttribute('fill', 'var(--accent)'); c1.setAttribute('opacity', '.55');
+        var c2 = document.createElementNS(ns, 'circle');
+        c2.setAttribute('cx', d[1]); c2.setAttribute('cy', d[2]); c2.setAttribute('r', 9);
+        c2.setAttribute('fill', 'none'); c2.setAttribute('stroke', 'var(--accent)');
+        c2.setAttribute('stroke-width', '1'); c2.setAttribute('opacity', '.22');
+        var tx = document.createElementNS(ns, 'text');
+        tx.setAttribute('x', d[1] + 11); tx.setAttribute('y', d[2] + 3.5);
+        tx.setAttribute('fill', 'var(--accent)'); tx.setAttribute('opacity', '.4');
+        tx.setAttribute('font-family', "'JetBrains Mono', monospace");
+        tx.setAttribute('font-size', '9'); tx.setAttribute('font-weight', '600');
+        tx.textContent = d[0];
+        g.appendChild(c1); g.appendChild(c2); g.appendChild(tx);
+      });
+    })();
+
+    // Coverage grid
+    (function () {
+      var coverage = [
+        "D1 · North City","D2 · South City","D3 · Clontarf","D4 · Ballsbridge",
+        "D5 · Raheny","D6 · Rathmines","D7 · Phibsboro","D8 · Liberties",
+        "D9 · Drumcondra","D10 · Ballyfermot","D11 · Finglas","D12 · Crumlin",
+        "D13 · Howth","D14 · Dundrum","D15 · Castleknock","D16 · Ballinteer",
+        "D17 · Coolock","D18 · Sandyford","D22 · Clondalkin","D24 · Tallaght"
+      ];
+      var wrap = document.getElementById('coverage');
+      coverage.forEach(function (p) {
+        var d = document.createElement('div');
+        d.className = 'cov';
+        d.innerHTML = '<span class="b">&#9679;</span>' + p;
+        wrap.appendChild(d);
+      });
+    })();
+  </script>
+</body>
+</html>

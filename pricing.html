@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CityPost — Pricing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .price-hero { padding: 72px 40px 32px; text-align: center; }
+    .price-hero .from { font-size: 15px; color: var(--soft); font-weight: 600; margin-top: 18px; letter-spacing: .04em; }
+    .price-hero h1 { font-size: 168px; line-height: .85; letter-spacing: -0.05em; font-weight: 800; margin: 4px auto 18px; max-width: 1100px; color: var(--accent); }
+    .price-hero p { font-size: 18px; color: var(--soft); max-width: 580px; margin: 0 auto; line-height: 1.55; font-weight: 600; }
+
+    .calc {
+      background: var(--panel); border: 1px solid var(--line); border-radius: 22px;
+      display: grid; grid-template-columns: 1fr 1.2fr; overflow: hidden;
+      box-shadow: 0 40px 100px -50px rgba(var(--accent-rgb), .3);
+    }
+    .calc-left { padding: 40px; border-right: 1px solid var(--line); position: relative; overflow: hidden; }
+    .calc-left .glow { position: absolute; right: -120px; top: -120px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(var(--accent-rgb), .1), transparent 70%); pointer-events: none; }
+    .calc-left .inner { position: relative; }
+    .calc-cap { font-size: 11px; color: var(--soft); font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+    .base-strike { font-size: 24px; font-weight: 600; color: var(--soft); margin-top: 14px; text-decoration: line-through; opacity: 0; transition: opacity .3s; }
+    .base-strike.show { opacity: .5; }
+    .big-total { font-size: 156px; font-weight: 800; letter-spacing: -0.05em; line-height: .9; color: var(--accent); margin: -12px 0 0; }
+    .total-sub { font-size: 14px; color: var(--soft); margin-top: 4px; }
+    .ledger { margin-top: 24px; padding: 14px 16px; background: var(--bg); border-radius: 10px; border: 1px solid var(--line); font-size: 13px; color: var(--soft); }
+    .ledger .row { display: flex; justify-content: space-between; margin-bottom: 6px; }
+    .ledger .row:last-child { margin-bottom: 0; }
+    .ledger .row .amt { font-family: var(--font-mono); color: var(--ink); }
+    .ledger .row .amt.accent { color: var(--accent); }
+    .included { margin-top: 28px; }
+    .included .cap { font-size: 11px; color: var(--soft); font-weight: 700; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 12px; }
+    .included li { padding: 8px 0; border-top: 1px solid var(--line); font-size: 14px; display: grid; grid-template-columns: 20px 1fr; gap: 10px; align-items: baseline; }
+    .included li:first-child { border-top: none; }
+    .included li .tick { color: var(--accent); font-weight: 700; }
+
+    .calc-right { padding: 40px; }
+    .calc-right h2 { font-size: 32px; font-weight: 800; letter-spacing: -0.025em; margin: 8px 0 0; }
+    .group-cap { font-size: 11px; color: var(--soft); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 10px; }
+    .opt-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 18px; }
+    .opt-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 18px; }
+    .opt { all: unset; cursor: pointer; padding: 14px 16px; border-radius: 12px; background: var(--bg); border: 1.5px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
+    .opt.size { text-align: center; flex-direction: column; padding: 14px 8px; }
+    .opt.on { background: var(--accent-tint); border-color: var(--accent); }
+    .opt .t { font-size: 15px; font-weight: 700; color: var(--ink); }
+    .opt .s { font-size: 11px; color: var(--soft); margin-top: 2px; }
+    .opt.size .s { font-family: var(--font-mono); font-size: 10px; }
+    .opt .tag { font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--soft); }
+    .opt.on .tag { color: var(--accent); }
+    .opt.size .tag { margin-top: 6px; font-size: 14px; }
+    .addons { display: flex; flex-direction: column; gap: 8px; }
+    .addon { all: unset; display: block; cursor: pointer; padding: 14px 18px; border-radius: 12px; background: var(--bg); border: 1.5px solid var(--line); transition: all .15s ease; }
+    .addon.on { background: var(--accent-tint); border-color: var(--accent); }
+    .addon .grid { display: grid; grid-template-columns: 24px 1fr auto; gap: 14px; align-items: center; }
+    .addon .sq { width: 20px; height: 20px; border-radius: 5px; border: 2px solid var(--muted); display: flex; align-items: center; justify-content: center; }
+    .addon.on .sq { background: var(--accent); border-color: var(--accent); }
+    .addon.on .sq::after { content: '\2713'; color: var(--bg); font-size: 12px; font-weight: 900; }
+    .addon .t { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; color: var(--ink); }
+    .addon .s { font-size: 12px; color: var(--soft); margin-top: 2px; }
+    .addon .amt { font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: var(--soft); }
+    .addon.on .amt { color: var(--accent); }
+    .book-line { text-align: center; font-size: 12px; color: var(--soft); margin-top: 10px; }
+
+    /* Business callout */
+    .biz { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 40px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: center; position: relative; overflow: hidden; }
+    .biz .glow { position: absolute; right: -100px; top: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(var(--accent-rgb), .12), transparent 70%); }
+    .biz .inner { position: relative; }
+    .biz h2 { font-size: 48px; font-weight: 800; letter-spacing: -0.03em; margin: 12px 0 18px; line-height: .98; }
+    .biz p { font-size: 16px; color: var(--soft); line-height: 1.55; margin: 0 0 24px; max-width: 480px; font-weight: 600; }
+    .invoice { background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 20px; position: relative; }
+    .invoice .head { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px dashed var(--line); padding-bottom: 12px; margin-bottom: 12px; }
+    .invoice .lbl { font-family: var(--font-mono); font-size: 10px; color: var(--soft); letter-spacing: .14em; }
+    .invoice .no { font-family: var(--font-mono); font-size: 14px; font-weight: 700; }
+    .invoice .paid { font-size: 11px; color: var(--accent); font-family: var(--font-mono); }
+    .invoice .r { display: flex; justify-content: space-between; padding: 8px 0; font-size: 13px; color: var(--soft); border-bottom: 1px solid var(--line); }
+    .invoice .r .amt { font-family: var(--font-mono); color: var(--ink); }
+    .invoice .total { display: flex; justify-content: space-between; padding: 14px 0 0; font-size: 16px; font-weight: 700; }
+    .invoice .total .amt { color: var(--accent); font-family: var(--font-mono); font-size: 22px; }
+
+    /* FAQ */
+    .faq-head { font-size: 36px; font-weight: 800; letter-spacing: -0.025em; margin: 0 0 28px; }
+    .faqs { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .faq { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 22px; }
+    .faq .top { display: flex; justify-content: space-between; align-items: flex-start; }
+    .faq .q { font-size: 18px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 10px; padding-right: 12px; }
+    .faq .plus { color: var(--accent); font-size: 18px; font-weight: 800; }
+    .faq .a { font-size: 14px; color: var(--soft); margin: 0; line-height: 1.55; }
+
+    .cta-strip { margin: 0 40px 40px; padding: 40px; background: var(--accent); color: var(--bg); border-radius: 18px; display: flex; justify-content: space-between; align-items: center; }
+    .cta-strip .k { font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; opacity: .7; }
+    .cta-strip .h { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; margin-top: 8px; line-height: 1; }
+
+    @media (max-width: 860px) {
+      .price-hero { padding: 48px 20px 24px; }
+      .price-hero h1 { font-size: 96px; }
+      .calc, .biz, .faqs { grid-template-columns: 1fr; }
+      .calc-left { border-right: none; border-bottom: 1px solid var(--line); }
+      .biz { gap: 28px; }
+      .biz h2 { font-size: 32px; }
+      .cta-strip { margin: 0 20px 40px; flex-direction: column; gap: 20px; align-items: flex-start; }
+      .cta-strip .h { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <a class="logo" href="index.html">
+      <span class="logo-mark"><span>&rsaquo;</span></span>
+      <span class="logo-word">CityPost</span>
+    </a>
+    <nav class="topnav">
+      <a href="index.html">Send a parcel</a>
+      <a href="pricing.html" class="active">Business</a>
+      <a href="pricing.html" class="active">Pricing</a>
+      <a href="account.html">Track</a>
+      <a href="pricing.html">Help</a>
+    </nav>
+    <div class="topbar-cta">
+      <a class="signin" href="account.html">Sign in</a>
+      <a class="btn btn--accent btn--sm" href="booking.html">Send a parcel &rarr;</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="price-hero">
+    <div class="eyebrow">Pricing</div>
+    <div class="from">Parcels across Dublin from</div>
+    <h1>&euro;7.99</h1>
+    <p>That's a letter, collected from your door today and delivered the next working day. Bigger parcel or extra services? Build your price below.</p>
+  </section>
+
+  <!-- CALCULATOR -->
+  <section class="section--tight">
+    <div class="calc">
+      <!-- LEFT -->
+      <div class="calc-left">
+        <div class="glow"></div>
+        <div class="inner">
+          <div class="calc-cap">From &middot; per parcel</div>
+          <div class="base-strike" id="base-strike">&euro;7.99</div>
+          <div class="big-total" id="big-total">&euro;7.99</div>
+          <div class="total-sub">per parcel, all in</div>
+          <div class="ledger" id="ledger"></div>
+          <div class="included">
+            <div class="cap">What's always included</div>
+            <ul>
+              <li><span class="tick">&#10003;</span><span>Same-day collection from your door</span></li>
+              <li><span class="tick">&#10003;</span><span>Next-working-day delivery, anywhere in Dublin</span></li>
+              <li><span class="tick">&#10003;</span><span>Tracked end-to-end</span></li>
+              <li><span class="tick">&#10003;</span><span>SMS to the recipient on the way</span></li>
+              <li><span class="tick">&#10003;</span><span>Photo on delivery</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="calc-right">
+        <div class="eyebrow">Build your parcel</div>
+        <h2>Size, speed, extras.</h2>
+
+        <div class="group-cap" style="margin-top:22px">Item size</div>
+        <div class="opt-row-3" id="sizes"></div>
+
+        <div class="group-cap">Delivery zone</div>
+        <div class="opt-row-2" id="zones"></div>
+
+        <div class="group-cap">Delivery window</div>
+        <div class="opt-row-2" id="windows"></div>
+
+        <div class="group-cap">Optional add-ons</div>
+        <div class="addons" id="addons"></div>
+
+        <a class="btn btn--accent btn--block" id="book-btn" href="booking.html" style="margin-top:24px;padding:16px;font-size:16px">Book for &euro;7.99 &rarr;</a>
+        <div class="book-line">Collected today &middot; no card charged until pickup</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUSINESS CALLOUT -->
+  <section class="section--tight" style="padding-top:0">
+    <div class="biz">
+      <div class="glow"></div>
+      <div class="inner">
+        <div class="eyebrow">For business</div>
+        <h2>10+ parcels a week?<br /><span class="accent">Same price. Better tools.</span></h2>
+        <p>Open a Business account — same per-parcel pricing from &euro;7.99. You get one dashboard for all your parcels, bulk-book by CSV or API, monthly invoicing, &euro;5k insurance included, and a named contact who picks up the phone.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <button class="btn btn--accent btn--md">Book a 15-min call &rarr;</button>
+          <button class="btn btn--ghost btn--md">See API docs</button>
+        </div>
+      </div>
+      <div class="inner">
+        <div class="invoice">
+          <div class="head">
+            <div><div class="lbl">INVOICE</div><div class="no">INV-2026-0421</div></div>
+            <div class="paid">&#9679; PAID</div>
+          </div>
+          <div class="r"><span>46 parcels &middot; base</span><span class="amt">&euro;457.70</span></div>
+          <div class="r"><span>+ AM delivery &times; 12</span><span class="amt">&euro;24.00</span></div>
+          <div class="r"><span>+ Same-day &times; 4</span><span class="amt">&euro;20.00</span></div>
+          <div class="r"><span>+ Signature &times; 8</span><span class="amt">&euro;8.00</span></div>
+          <div class="total"><span>Total &middot; April</span><span class="amt">&euro;509.70</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section divider-top">
+    <h2 class="faq-head">Questions <span class="accent">before you book.</span></h2>
+    <div class="faqs" id="faqs"></div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-strip">
+    <div>
+      <div class="k">Still picking?</div>
+      <div class="h">Try one parcel. From &euro;7.99.</div>
+    </div>
+    <a class="btn btn--invert btn--lg" href="booking.html">Send a parcel &rarr;</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div>
+      <a class="logo" href="index.html"><span class="logo-mark"><span>&rsaquo;</span></span><span class="logo-word">CityPost</span></a>
+      <div class="tag">We collect today. We deliver tomorrow.</div>
+    </div>
+    <div class="col"><div class="col-title">Send</div><a href="booking.html">Parcels</a><a href="booking.html">Documents</a><a href="booking.html">Same-day</a><a href="pricing.html">Bulk &amp; API</a></div>
+    <div class="col"><div class="col-title">Business</div><a href="pricing.html">Account pricing</a><a href="pricing.html">API &amp; integrations</a><a href="pricing.html">Case studies</a><a href="pricing.html">Contact sales</a></div>
+    <div class="col"><div class="col-title">Company</div><a href="#">About</a><a href="#">Jobs</a><a href="#">Sustainability</a><a href="#">Press</a></div>
+    <div class="col"><div class="col-title">Help</div><a href="account.html">Track a parcel</a><a href="pricing.html">Pricing</a><a href="#">Contact</a><a href="pricing.html">FAQ</a></div>
+  </footer>
+  <div class="legal">&copy; 2026 CityPost Logistics Ltd. &middot; 23 Sir John Rogerson's Quay, Dublin 2 &middot; CRO 612 884</div>
+
+  <script>
+    var SIZES = [
+      { id: 'letter',  label: 'Letter',  blurb: 'Max 500g · A4 size',     price: 7.99 },
+      { id: 'package', label: 'Package', blurb: 'Max 2kg · 45×35×20cm',   price: 8.99 },
+      { id: 'box',     label: 'Box',     blurb: 'Max 10kg · 60×40×40cm',  price: 9.99 }
+    ];
+    var ZONE2_FEE = 2.00, AM_FEE = 4.99;
+    var ADDONS = [
+      { id: 'signature', label: 'Signature required',   blurb: 'Recipient signs on delivery', price: 1.99 },
+      { id: 'photo',     label: 'Photo proof',          blurb: 'Delivery photo sent to you',  price: 0.99 },
+      { id: 'insure',    label: 'Additional insurance', blurb: 'Cover up to €500',            price: 4.99 }
+    ];
+
+    var state = { size: 'letter', zone2: false, am: false, selected: [] };
+
+    function money(n) { return '€' + n.toFixed(2); }
+
+    function render() {
+      // Sizes
+      var sizesEl = document.getElementById('sizes');
+      sizesEl.innerHTML = '';
+      SIZES.forEach(function (sz) {
+        var on = state.size === sz.id;
+        var b = document.createElement('button');
+        b.className = 'opt size' + (on ? ' on' : '');
+        b.innerHTML = '<div class="t">' + sz.label + '</div><div class="s">' + sz.blurb + '</div><div class="tag">' + money(sz.price) + '</div>';
+        b.onclick = function () { state.size = sz.id; render(); };
+        sizesEl.appendChild(b);
+      });
+
+      // Zones
+      var zonesEl = document.getElementById('zones');
+      zonesEl.innerHTML = '';
+      [
+        { z: false, label: 'City Centre', sub: 'D1–D8', tag: 'Included' },
+        { z: true,  label: 'Greater Dublin', sub: 'D9–D24', tag: '+' + money(ZONE2_FEE) }
+      ].forEach(function (opt) {
+        var on = state.zone2 === opt.z;
+        var b = document.createElement('button');
+        b.className = 'opt' + (on ? ' on' : '');
+        b.innerHTML = '<div><div class="t">' + opt.label + '</div><div class="s">' + opt.sub + '</div></div><span class="tag">' + opt.tag + '</span>';
+        b.onclick = function () { state.zone2 = opt.z; render(); };
+        zonesEl.appendChild(b);
+      });
+
+      // Windows
+      var winEl = document.getElementById('windows');
+      winEl.innerHTML = '';
+      [
+        { a: false, label: 'Anytime', sub: 'Next working day', tag: 'Included' },
+        { a: true,  label: 'Before 1pm', sub: 'Next working day', tag: '+' + money(AM_FEE) }
+      ].forEach(function (opt) {
+        var on = state.am === opt.a;
+        var b = document.createElement('button');
+        b.className = 'opt' + (on ? ' on' : '');
+        b.innerHTML = '<div><div class="t">' + opt.label + '</div><div class="s">' + opt.sub + '</div></div><span class="tag">' + opt.tag + '</span>';
+        b.onclick = function () { state.am = opt.a; render(); };
+        winEl.appendChild(b);
+      });
+
+      // Add-ons
+      var addEl = document.getElementById('addons');
+      addEl.innerHTML = '';
+      ADDONS.forEach(function (a) {
+        var on = state.selected.indexOf(a.id) > -1;
+        var b = document.createElement('button');
+        b.className = 'addon' + (on ? ' on' : '');
+        b.innerHTML = '<div class="grid"><div class="sq"></div><div><div class="t">' + a.label + '</div><div class="s">' + a.blurb + '</div></div><div class="amt">+' + money(a.price) + '</div></div>';
+        b.onclick = function () {
+          var i = state.selected.indexOf(a.id);
+          if (i > -1) state.selected.splice(i, 1); else state.selected.push(a.id);
+          render();
+        };
+        addEl.appendChild(b);
+      });
+
+      // Totals
+      var sizeObj = SIZES.filter(function (x) { return x.id === state.size; })[0] || SIZES[0];
+      var base = sizeObj.price;
+      var extrasArr = ADDONS.filter(function (a) { return state.selected.indexOf(a.id) > -1; });
+      var extras = extrasArr.reduce(function (s, a) { return s + a.price; }, 0)
+        + (state.zone2 ? ZONE2_FEE : 0) + (state.am ? AM_FEE : 0);
+      var total = base + extras;
+
+      document.getElementById('big-total').textContent = money(total);
+      var strike = document.getElementById('base-strike');
+      strike.textContent = money(base);
+      strike.classList.toggle('show', extras > 0);
+
+      var ledger = '<div class="row"><span>Base · ' + sizeObj.label + '</span><span class="amt">' + money(base) + '</span></div>';
+      if (state.zone2) ledger += '<div class="row"><span>+ Greater Dublin (D9–D24)</span><span class="amt accent">' + money(ZONE2_FEE) + '</span></div>';
+      if (state.am) ledger += '<div class="row"><span>+ Before 1pm delivery</span><span class="amt accent">' + money(AM_FEE) + '</span></div>';
+      extrasArr.forEach(function (a) {
+        ledger += '<div class="row"><span>+ ' + a.label + '</span><span class="amt accent">' + money(a.price) + '</span></div>';
+      });
+      document.getElementById('ledger').innerHTML = ledger;
+
+      document.getElementById('book-btn').innerHTML = 'Book for ' + money(total) + ' &rarr;';
+    }
+
+    render();
+
+    // FAQ
+    (function () {
+      var faqs = [
+        { q: 'Do I need to drop it at a post office?', a: 'No — that\u2019s the whole point. We collect from your door. Book before 2pm and a courier is with you this afternoon. No queues, no ID, no paperwork.' },
+        { q: 'How is "next-day" defined?', a: 'Book before 2pm — we collect today and deliver the next working day, anywhere in Dublin\u2019s 24 postal codes. Need it before 1pm? Add it for €4.99.' },
+        { q: 'What if I send 10+ a week?', a: 'Open a Business account — same per-parcel pricing, plus invoicing, API, CSV bulk-booking, and a named contact. No subscription.' },
+        { q: 'What can\u2019t I send?', a: 'Hazardous goods, restricted items, anything heavier than 8kg, or anything that won\u2019t fit in a 60×40×40cm box.' },
+        { q: 'How does the signed-for option work?', a: 'Add Signature required for €1.99 — we capture the recipient\u2019s signature on delivery alongside the photo. No trip to the post office required.' },
+        { q: 'Can I integrate with my shop?', a: 'Yes — our API + native Shopify, WooCommerce, and Squarespace plugins are free on Business accounts.' }
+      ];
+      var wrap = document.getElementById('faqs');
+      faqs.forEach(function (f) {
+        var d = document.createElement('div');
+        d.className = 'faq';
+        d.innerHTML = '<div class="top"><div class="q">' + f.q + '</div><span class="plus">+</span></div><p class="a">' + f.a + '</p>';
+        wrap.appendChild(d);
+      });
+    })();
+  </script>
+</body>
+</html>
