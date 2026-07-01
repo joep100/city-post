@@ -1,0 +1,128 @@
+/************ fonts *************/
+
+@font-face{
+    font-family: 'Fira Sans';
+    src: url("../fonts/eot/FiraSans-Light.eot");
+    src: local("Fira Sans Light"),
+         url("../fonts/eot/FiraSans-Light.eot") format("embedded-opentype"),
+         url("../fonts/woff/FiraSans-Light.woff") format("woff"),
+         url("../fonts/ttf/FiraSans-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: 'Fira Sans';
+    src: url("../fonts/eot/FiraSans-LightItalic.eot");
+    src: local("Fira Sans Light Italic"),
+         url("../fonts/eot/FiraSans-LightItalic.eot") format("embedded-opentype"),
+         url("../fonts/woff/FiraSans-LightItalic.woff") format("woff"),
+         url("../fonts/ttf/FiraSans-LightItalic.ttf") format("truetype");
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face{
+    font-family: 'Fira Sans';
+    src: url("../fonts/eot/FiraSans-Regular.eot");
+    src: local("Fira Sans Regular"),
+         url("../fonts/eot/FiraSans-Regular.eot") format("embedded-opentype"),
+         url("../fonts/woff/FiraSans-Regular.woff") format("woff"),
+         url("../fonts/ttf/FiraSans-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: 'Fira Sans';
+    src: url("../fonts/eot/FiraSans-RegularItalic.eot");
+    src: local("Fira Sans Regular Italic"),
+         url("../fonts/eot/FiraSans-RegularItalic.eot") format("embedded-opentype"),
+         url("../fonts/woff/FiraSans-RegularItalic.woff") format("woff"),
+         url("../fonts/ttf/FiraSans-RegularItalic.ttf") format("truetype");
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face{
+    font-family: 'Fira Sans';
+    src: url("../fonts/eot/FiraSans-Medium.eot");
+    src: local("Fira Sans Medium"),
+         url("../fonts/eot/FiraSans-Medium.eot") format("embedded-opentype"),
+         url("../fonts/woff/FiraSans-Medium.woff") format("woff"),
+         url("../fonts/ttf/FiraSans-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: 'Fira Sans';
+    src: url("../fonts/eot/FiraSans-MediumItalic.eot");
+    src: local("Fira Sans Medium Italic"),
+         url("../fonts/eot/FiraSans-MediumItalic.eot") format("embedded-opentype"),
+         url("../fonts/woff/FiraSans-MediumItalic.woff") format("woff"),
+         url("../fonts/ttf/FiraSans-MediumItalic.ttf") format("truetype");
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face{
+    font-family: 'Fira Sans';
+    src: url("../fonts/eot/FiraSans-Bold.eot");
+    src: local("Fira Sans Bold"),
+         url("../fonts/eot/FiraSans-Bold.eot") format("embedded-opentype"),
+         url("../fonts/woff/FiraSans-Bold.woff") format("woff"),
+         url("../fonts/ttf/FiraSans-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: 'Fira Sans';
+    src: url("../fonts/eot/FiraSans-BoldItalic.eot");
+    src: local("Fira Sans Bold Italic"),
+         url("../fonts/eot/FiraSans-BoldItalic.eot") format("embedded-opentype"),
+         url("../fonts/woff/FiraSans-BoldItalic.woff") format("woff"),
+         url("../fonts/ttf/FiraSans-BoldItalic.ttf") format("truetype");
+    font-weight: 700;
+    font-style: italic;
+}
+
+// Fira Mono
+
+@font-face{
+    font-family: 'Fira Mono';
+    src: url("../fonts/eot/FiraMono-Regular.eot");
+    src: local("Fira Mono"),
+         url("../fonts/eot/FiraMono-Regular.eot") format("embedded-opentype"),
+         url("../fonts/woff/FiraMono-Regular.woff") format("woff"),
+         url("../fonts/ttf/FiraMono-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: 'Fira Mono';
+    src: url("../fonts/eot/FiraMono-Regular.eot");
+    src: local("Fira Mono"),
+         url("../fonts/eot/FiraMono-Regular.eot") format("embedded-opentype"),
+         url("../fonts/woff/FiraMono-Regular.woff") format("woff"),
+         url("../fonts/ttf/FiraMono-Regular.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'revenue_icons';
+  src:  url('../fonts/revenue_icons.eot?7bs9g5');
+  src:  url('../fonts/revenue_icons.eot?7bs9g5#iefix') format('embedded-opentype'),
+    url('../fonts/revenue_icons.ttf?7bs9g5') format('truetype'),
+    url('../fonts/revenue_icons.woff?7bs9g5') format('woff'),
+    url('../fonts/revenue_icons.svg?7bs9g5#revenue_icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+/********* end fonts **************/
