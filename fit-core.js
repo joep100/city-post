@@ -10,14 +10,24 @@
 
   var TIER_NAME = { small: 'Small parcel', package: 'Parcel', box: 'Box' };
 
-  // Capacity caps per tier. One universal limit for every route — a "yes"
-  // is always a yes, regardless of where it's going. Cargo bikes still run
-  // city-centre routes, but that's an ops choice, invisible to the customer.
-  function caps() {
+  // Carrier envelope depends on the route. Zone 1 (city centre) runs on
+  // cargo bikes with a big box; Zone 2 (greater Dublin) is capped smaller.
+  // The three pricing tiers exist on both routes — Zone 1 just carries a
+  // larger max parcel across the board.
+  var ENVELOPE = {
+    zone1: { maxLong: 80, maxSide: 60, kg: 30, vcap: 288000, label: '80\u00d760\u00d760 cm, 30 kg', route: 'cargo bike' },
+    zone2: { maxLong: 40, maxSide: 30, kg: 8, vcap: 36000,  label: '40\u00d730\u00d730 cm, 8 kg', route: 'bike' }
+  };
+  function normZone(z) { return z === 'zone2' ? 'zone2' : 'zone1'; }
+  function envelope(zone) { return ENVELOPE[normZone(zone)]; }
+  function maxLabel(zone) { return ENVELOPE[normZone(zone)].label; }
+
+  function caps(zone) {
+    var box = envelope(zone);
     return {
       small:   { maxLong: 35, maxSide: 25, kg: 1,  vcap: 15000 },
-      package: { maxLong: 60, maxSide: 60, kg: 2,  vcap: 31500 },
-      box:     { maxLong: 60, maxSide: 40, kg: 10, vcap: 96000 }
+      package: { maxLong: 45, maxSide: 35, kg: 2,  vcap: 31500 },
+      box:     { maxLong: box.maxLong, maxSide: box.maxSide, kg: box.kg, vcap: box.vcap }
     };
   }
 
@@ -32,8 +42,8 @@
 
   // Classify an item. startTier is the tier the customer picked; an item too
   // big for it but fitting the next one up auto-upgrades (and is charged there).
-  function classify(l, w, h, kg, startTier) {
-    var CAPS = caps();
+  function classify(l, w, h, kg, startTier, zone) {
+    var CAPS = caps(zone);
     var order = ['small', 'package', 'box'];
     var startIdx = Math.max(0, order.indexOf(startTier || 'small'));
     var effective = startTier || 'small', upgraded = false, fits = false;
@@ -118,6 +128,7 @@
 
   root.MolliFit = {
     ACCENT: ACCENT, PRICES: PRICES, TIER_NAME: TIER_NAME,
-    caps: caps, classify: classify, drawGauge: drawGauge, PRESETS: PRESETS
+    caps: caps, classify: classify, drawGauge: drawGauge, PRESETS: PRESETS,
+    ENVELOPE: ENVELOPE, envelope: envelope, maxLabel: maxLabel, normZone: normZone
   };
 })(window);

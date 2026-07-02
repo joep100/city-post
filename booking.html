@@ -63,6 +63,17 @@
             flex-wrap: nowrap;
         }
 
+        .o-wheel {
+            display: inline-block; width: 0.62em; height: 0.62em; vertical-align: -0.01em;
+            margin: 0 -0.038em 0 -0.005em;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239CFF2E' stroke-width='3.5' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='10.2'/%3E%3Ccircle cx='12' cy='12' r='3.4' fill='%239CFF2E' stroke='none'/%3E%3Cline x1='12' y1='3.6' x2='12' y2='20.4'/%3E%3Cline x1='17.9' y1='6.1' x2='6.1' y2='17.9'/%3E%3Cline x1='17.9' y1='17.9' x2='6.1' y2='6.1'/%3E%3C/svg%3E") center/contain no-repeat;
+        }
+        .i-wheel { position: relative; display: inline-block; z-index: 0; }
+        .i-wheel::before {
+            content: ""; position: absolute; z-index: -1; left: 50%; transform: translateX(-50%);
+            bottom: 0.76em; width: 0.42em; height: 0.42em;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239CFF2E' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='8'/%3E%3Ccircle cx='12' cy='12' r='2' fill='%239CFF2E' stroke='none'/%3E%3Cline x1='12' y1='4' x2='12' y2='20'/%3E%3Cline x1='4' y1='12' x2='20' y2='12'/%3E%3Cline x1='6.3' y1='6.3' x2='17.7' y2='17.7'/%3E%3Cline x1='17.7' y1='6.3' x2='6.3' y2='17.7'/%3E%3C/svg%3E") center/contain no-repeat;
+        }
         .logo {
             font-size: 22px;
             font-weight: 800;
@@ -152,7 +163,7 @@
 
         .form-section h3 {
             font-size: 13px;
-            font-weight: 700;
+            font-weight: 500;
             letter-spacing: .04em;
             margin-bottom: 12px;
             color: var(--accent);
@@ -167,7 +178,7 @@
             display: block;
             margin-bottom: 5px;
             font-size: 11px;
-            font-weight: 700;
+            font-weight: 500;
             letter-spacing: .08em;
             text-transform: uppercase;
             color: var(--soft);
@@ -246,7 +257,7 @@
 
         .option-card-title {
             font-size: 15px;
-            font-weight: 700;
+            font-weight: 500;
             color: var(--ink);
         }
 
@@ -344,7 +355,7 @@
         .sizer-hint { font-size: 12px; color: var(--soft); margin-bottom: 14px; line-height: 1.5; }
         .restricted-note { display: flex; gap: 10px; align-items: flex-start; margin-top: 14px; padding: 12px 14px; background: rgba(255,255,255,.03); border: 1px solid var(--line); border-radius: 10px; font-size: 12px; color: var(--soft); line-height: 1.5; }
         .restricted-note svg { flex-shrink: 0; margin-top: 1px; }
-        .restricted-note b { color: #fff; font-weight: 700; }
+        .restricted-note b { color: #fff; font-weight: 500; }
         .slider-rows { display: flex; flex-direction: column; gap: 15px; margin-bottom: 16px; }
         .slider-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 7px; }
         .slider-top label { font-size: 12px; color: var(--soft); font-weight: 600; }
@@ -367,7 +378,7 @@
         input[type=range].over::-moz-range-thumb { background: #ff5a5a; }
         .gauge { display: flex; justify-content: center; padding: 6px 0 10px; }
         .vol-line { text-align: center; font-family: var(--font-mono); font-size: 11px; color: var(--soft); margin-bottom: 10px; letter-spacing: .02em; }
-        .vol-line b { color: #fff; font-weight: 700; }
+        .vol-line b { color: #fff; font-weight: 500; }
         .letter-ok {
             display: flex; align-items: center; gap: 10px; padding: 14px 16px;
             background: rgba(127,224,1,.1); border: 1px solid rgba(127,224,1,.3); border-radius: 10px;
@@ -378,7 +389,7 @@
         .fmt-btn.active { background: rgba(127,224,1,.1); border-color: #7FE001; }
         .fmt-name { display: block; font-size: 18px; font-weight: 800; color: #fff; letter-spacing: -0.01em; }
         .fmt-dim { display: block; font-size: 10px; color: var(--soft); font-family: var(--font-mono); margin-top: 3px; }
-        .sizer-verdict { text-align: center; font-weight: 700; font-size: 14px; padding: 11px; border-radius: 8px; line-height: 1.4; }
+        .sizer-verdict { text-align: center; font-weight: 500; font-size: 14px; padding: 11px; border-radius: 8px; line-height: 1.4; }
         .sizer-verdict.ok { color: #7FE001; background: rgba(127,224,1,.1); }
         .sizer-verdict.bad { color: #ff8a8a; background: rgba(255,90,90,.1); }
         .sizer-verdict.idle { color: var(--soft); background: rgba(255,255,255,.03); }
@@ -564,7 +575,7 @@
                 <span style="width: 30px; height: 30px; background: #7FE001; border-radius: 6px; display: flex; align-items: center; justify-content: center; transform: skewX(-12deg);">
                     <span style="color: #0a0a0a; font-weight: 900; font-size: 18px; transform: skewX(12deg);">›</span>
                 </span>
-                <span class="logo" style="text-transform: lowercase;">Molli</span>
+                <span class="logo" style="text-transform: lowercase;">m<span class="o-wheel"></span>lli</span>
             </div>
             <nav>
                 <a class="nav-link" href="index.html">Home</a>
@@ -750,11 +761,11 @@
                 <div class="form-section" style="padding: 0; overflow: hidden;">
                     <div id="run-row-today" class="run-row" style="display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-bottom: 1px solid var(--line);">
                         <div style="font-family: var(--font-mono); font-size: 12px; color: var(--accent); font-weight: 700; min-width: 62px;">by 2pm</div>
-                        <div><div style="font-size: 14px; font-weight: 700;">Delivered today</div><div style="font-size: 12px; color: var(--soft);">Collected on the midday run, delivered this afternoon/evening.</div></div>
+                        <div><div style="font-size: 14px; font-weight: 500;">Delivered today</div><div style="font-size: 12px; color: var(--soft);">Collected on the midday run, delivered this afternoon/evening.</div></div>
                     </div>
                     <div id="run-row-tomorrow" class="run-row" style="display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px;">
                         <div style="font-family: var(--font-mono); font-size: 12px; color: var(--soft); font-weight: 700; min-width: 62px;">after 2pm</div>
-                        <div><div style="font-size: 14px; font-weight: 700;">Before 1pm tomorrow</div><div style="font-size: 12px; color: var(--soft);">Collected on the evening run, delivered first thing next morning.</div></div>
+                        <div><div style="font-size: 14px; font-weight: 500;">Before 1pm tomorrow</div><div style="font-size: 12px; color: var(--soft);">Collected on the evening run, delivered first thing next morning.</div></div>
                     </div>
                 </div>
 
@@ -772,7 +783,7 @@
                 <p class="subtitle">Choose your parcel size</p>
 
                 <div class="form-section">
-                    <label style="display: block; margin-bottom: 8px; font-size: 17px; font-weight: 700; color: #fff;">Item Type</label>
+                    <label style="display: block; margin-bottom: 8px; font-size: 17px; font-weight: 500; color: #fff;">Item Type</label>
                     <div class="option-grid-2" style="grid-template-columns: repeat(3, 1fr); gap: 8px;">
                         <div class="option">
                             <input type="radio" name="item-type" value="small" checked onchange="updateItemPrice()">
@@ -811,7 +822,7 @@
                                     <line x1="26" y1="10" x2="26" y2="16" stroke="#7FE001" stroke-width="1.5"/>
                                 </svg>
                                 <div class="option-card-title">Box</div>
-                                <div class="option-card-sub" style="margin-top: 3px; font-size: 10px; line-height: 1.3;">Wine case, hamper<br>Up to 10kg</div>
+                                <div class="option-card-sub" style="margin-top: 3px; font-size: 10px; line-height: 1.3;">Wine case, hamper<br>Up to 30kg</div>
                                 <div class="option-card-price" id="price-box">€9.99</div>
                             </div>
                         </div>
@@ -819,8 +830,8 @@
                 </div>
 
                 <div class="form-section sizer" id="sizer-section">
-                    <label style="display: block; margin-bottom: 6px; font-size: 17px; font-weight: 700; color: #fff;">Will it fit?</label>
-                    <p class="sizer-hint">Just like the bag sizer at the airport — if it fits the frame, we can carry it. Everything travels by bike, so it has to fit the box: up to 60&times;40&times;40&nbsp;cm, 10&nbsp;kg.</p>
+                    <label style="display: block; margin-bottom: 6px; font-size: 17px; font-weight: 500; color: #fff;">Will it fit?</label>
+                    <p class="sizer-hint">Just like the bag sizer at the airport — if it fits the frame, we can carry it. City-centre runs go by cargo bike (up to 80&times;60&times;60&nbsp;cm, 30&nbsp;kg); greater Dublin up to 40&times;30&times;30&nbsp;cm, 8&nbsp;kg. The gauge uses the route we detect from your addresses.</p>
                     <div class="slider-rows">
                         <div class="slider-row">
                             <div class="slider-top"><label>Length</label><span class="slider-val" id="val-l">30 cm</span></div>
@@ -895,14 +906,14 @@
                     </div>
                 </div>
 
-                <h3 style="font-size: 16px; font-weight: 700; margin: 16px 0 8px 0; color: #7FE001;">Optional Add-ons</h3>
+                <h3 style="font-size: 16px; font-weight: 500; margin: 16px 0 8px 0; color: #7FE001;">Optional Add-ons</h3>
 
                 <div class="form-section">
                     <label class="addon-card">
                         <input type="checkbox" id="addon-insurance">
                         <span class="sq"></span>
                         <span>
-                            <span style="display: block; font-size: 15px; font-weight: 700; color: #fff;">Signature Required</span>
+                            <span style="display: block; font-size: 15px; font-weight: 500; color: #fff;">Signature Required</span>
                             <span style="display: block; font-size: 12px; color: rgba(255,255,255,.55); line-height: 1.4;">We'll text you the name of who signed for it</span>
                         </span>
                         <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 700; color: var(--accent); font-size: 14px;">+€1.99</span>
@@ -912,7 +923,7 @@
                         <input type="checkbox" id="addon-photo">
                         <span class="sq"></span>
                         <span>
-                            <span style="display: block; font-size: 15px; font-weight: 700; color: #fff;">Photo Proof</span>
+                            <span style="display: block; font-size: 15px; font-weight: 500; color: #fff;">Photo Proof</span>
                             <span style="display: block; font-size: 12px; color: rgba(255,255,255,.55); line-height: 1.4;">Delivery photo sent to you</span>
                         </span>
                         <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 700; color: var(--accent); font-size: 14px;">+€0.99</span>
@@ -922,7 +933,7 @@
                         <input type="checkbox" id="addon-additional-insurance">
                         <span class="sq"></span>
                         <span>
-                            <span style="display: block; font-size: 15px; font-weight: 700; color: #fff;">Additional Insurance</span>
+                            <span style="display: block; font-size: 15px; font-weight: 500; color: #fff;">Additional Insurance</span>
                             <span style="display: block; font-size: 12px; color: rgba(255,255,255,.55); line-height: 1.4;">Coverage up to €500</span>
                         </span>
                         <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 700; color: var(--accent); font-size: 14px;">+€4.99</span>
@@ -932,7 +943,7 @@
                         <input type="checkbox" id="addon-sms">
                         <span class="sq"></span>
                         <span>
-                            <span style="display: block; font-size: 15px; font-weight: 700; color: #fff;">Text recipient when en route</span>
+                            <span style="display: block; font-size: 15px; font-weight: 500; color: #fff;">Text recipient when en route</span>
                             <span style="display: block; font-size: 12px; color: rgba(255,255,255,.55); line-height: 1.4;">SMS sent when the courier is on the way</span>
                         </span>
                         <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 700; color: var(--accent); font-size: 14px;">+€0.99</span>
@@ -999,15 +1010,15 @@
                 <div class="form-section" style="background: rgba(127,224,1,.06); border-color: rgba(127,224,1,.3);">
                     <h3 style="margin-bottom: 12px;">Sending to</h3>
                     <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
-                        <span style="font-size: 11px; color: var(--soft); letter-spacing: .08em; text-transform: uppercase; font-weight: 700;">Name</span>
+                        <span style="font-size: 11px; color: var(--soft); letter-spacing: .08em; text-transform: uppercase; font-weight: 500;">Name</span>
                         <span id="recap-recipient-name" style="font-size: 14px; font-weight: 600; color: var(--ink);">—</span>
                     </div>
                     <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
-                        <span style="font-size: 11px; color: var(--soft); letter-spacing: .08em; text-transform: uppercase; font-weight: 700;">Mobile</span>
+                        <span style="font-size: 11px; color: var(--soft); letter-spacing: .08em; text-transform: uppercase; font-weight: 500;">Mobile</span>
                         <span id="recap-recipient-phone" style="font-size: 14px; font-weight: 600; color: var(--ink);">—</span>
                     </div>
                     <div style="display: flex; justify-content: space-between; align-items: baseline;">
-                        <span style="font-size: 11px; color: var(--soft); letter-spacing: .08em; text-transform: uppercase; font-weight: 700;">Address</span>
+                        <span style="font-size: 11px; color: var(--soft); letter-spacing: .08em; text-transform: uppercase; font-weight: 500;">Address</span>
                         <span id="recap-recipient-address" style="font-size: 14px; font-weight: 600; color: var(--ink); text-align: right; max-width: 60%;">—</span>
                     </div>
                 </div>
@@ -1063,7 +1074,7 @@
                 </div>
 
                 <div id="payment-method" class="form-section" style="display: none;">
-                    <label style="display: block; margin-bottom: 10px; font-size: 17px; font-weight: 700; color: #fff;">Payment</label>
+                    <label style="display: block; margin-bottom: 10px; font-size: 17px; font-weight: 500; color: #fff;">Payment</label>
                     <div class="option-grid-2">
                         <div class="option">
                             <input type="radio" name="pay-method" id="pay-credit" value="credit" checked onchange="updatePaymentMethod()">
@@ -1140,6 +1151,7 @@
         </div>
     </div>
 
+    <script src="fit-core.js"></script>
     <script>
         let currentPage = 1;
         let isLoggedIn = false;
@@ -1215,7 +1227,7 @@
                 btn.type = 'button';
                 btn.className = 'used-address';
                 btn.onclick = function () { applyRecipient(btn, r.name, r.phone, r.eircode, r.address); };
-                btn.innerHTML = '<div style="font-weight: 700; font-size: 14px; color: #fff;">' + escHtml(r.name) + '</div>'
+                btn.innerHTML = '<div style="font-weight: 500; font-size: 14px; color: #fff;">' + escHtml(r.name) + '</div>'
                     + '<div style="font-size: 12px; color: #b8b8b8; margin-top: 2px;">' + escHtml(r.address) + ' &middot; ' + escHtml(r.eircode) + '</div>';
                 wrap.appendChild(btn);
             });
@@ -1848,57 +1860,11 @@
             if (grid) grid.style.gridTemplateColumns = 'repeat(3, 1fr)';
         }
 
-        var SIZE_LIMITS = {
-            small:   { l: 35, w: 25, h: 18, kg: 1,  vcap: 15000 },
-            package: { l: 45, w: 35, h: 20, kg: 2,  vcap: 31500 },
-            box:     { l: 60, w: 40, h: 40, kg: 10, vcap: 96000 }
-        };
         window.__fitsOk = false;
+        // Capacity caps + the 3D cage renderer come from fit-core.js (MolliFit),
+        // shared with the Will-it-fit page so the two can never drift out of sync.
         function drawGauge(lim, parcel, fitsOverride) {
-            var svg = document.getElementById('gauge-svg'); if (!svg) return;
-            var W = 360, H = 276, padX = 58, padTop = 36, padBot = 40, dco = 0.5;
-            var mL = Math.max(lim.l, parcel ? parcel.l : 0);
-            var mW = Math.max(lim.w, parcel ? parcel.w : 0);
-            var mH = Math.max(lim.h, parcel ? parcel.h : 0);
-            var scale = Math.min((W - 2 * padX) / (mW + mL * dco), (H - padTop - padBot) / (mH + mL * dco));
-            function faces(fx, fy, wv, hv, lv, stroke, fillOn, dash, sw) {
-                var bw = wv * scale, bh = hv * scale, ox = lv * scale * dco, oy = lv * scale * dco;
-                var bx = fx + ox, by = fy - oy, d = dash ? ' stroke-dasharray="4 4"' : '';
-                var g = '';
-                g += '<polygon points="' + fx + ',' + fy + ' ' + (fx + bw) + ',' + fy + ' ' + (bx + bw) + ',' + by + ' ' + bx + ',' + by + '" fill="' + stroke + '" fill-opacity="' + (fillOn ? 0.12 : 0) + '" stroke="' + stroke + '" stroke-width="' + sw + '"' + d + '/>';
-                g += '<polygon points="' + (fx + bw) + ',' + fy + ' ' + (fx + bw) + ',' + (fy + bh) + ' ' + (bx + bw) + ',' + (by + bh) + ' ' + (bx + bw) + ',' + by + '" fill="' + stroke + '" fill-opacity="' + (fillOn ? 0.2 : 0) + '" stroke="' + stroke + '" stroke-width="' + sw + '"' + d + '/>';
-                g += '<rect x="' + fx + '" y="' + fy + '" width="' + bw + '" height="' + bh + '" fill="' + stroke + '" fill-opacity="' + (fillOn ? 0.26 : 0) + '" stroke="' + stroke + '" stroke-width="' + (sw + 0.5) + '"' + d + '/>';
-                return g;
-            }
-            var maxOx = mL * scale * dco;
-            var envWpx = mW * scale + maxOx, envHpx = mH * scale + maxOx;
-            var fx = padX + ((W - 2 * padX) - envWpx) / 2;
-            var top = padTop + ((H - padTop - padBot) - envHpx) / 2;
-            var cw = lim.w * scale, ch = lim.h * scale, cox = lim.l * scale * dco;
-            var ground = top + maxOx + mH * scale;   // y of cage front-bottom edge
-            var fy = ground - ch;                     // cage front-top
-            var s = '';
-            // Ground shadow
-            s += '<ellipse cx="' + (fx + cw / 2 + cox / 2) + '" cy="' + (ground + 11) + '" rx="' + (cw * 0.72) + '" ry="7" fill="#000" opacity="0.35"/>';
-            // Floor plate (bottom face of the cage)
-            s += '<polygon points="' + fx + ',' + ground + ' ' + (fx + cw) + ',' + ground + ' ' + (fx + cw + cox) + ',' + (ground - cox) + ' ' + (fx + cox) + ',' + (ground - cox) + '" fill="#7FE001" fill-opacity="0.08" stroke="#7FE001" stroke-opacity="0.45" stroke-width="1"/>';
-            // The cage (faint dashed frame)
-            s += faces(fx, fy, lim.w, lim.h, lim.l, '#7FE001', false, true, 1);
-            // Welded-joint nodes at the 8 corners
-            var ox = cox, oy = cox, bw = cw, bh = ch;
-            var verts = [[fx, fy], [fx + bw, fy], [fx, fy + bh], [fx + bw, fy + bh], [fx + ox, fy - oy], [fx + bw + ox, fy - oy], [fx + ox, fy + bh - oy], [fx + bw + ox, fy + bh - oy]];
-            verts.forEach(function (p) { s += '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="2.4" fill="#7FE001"/>'; });
-            // Dimension labels on the cage edges
-            s += '<text x="' + (fx + bw / 2) + '" y="' + (fy + bh + 16) + '" fill="#7FE001" font-size="9" font-family="monospace" text-anchor="middle">' + lim.w + ' cm</text>';
-            var hx = fx - 10, hy = fy + bh / 2;
-            s += '<text x="' + hx + '" y="' + hy + '" fill="#7FE001" font-size="9" font-family="monospace" text-anchor="middle" transform="rotate(-90 ' + hx + ' ' + hy + ')">' + lim.h + ' cm</text>';
-            s += '<text x="' + (fx + bw + ox / 2 + 11) + '" y="' + (fy - oy / 2 - 3) + '" fill="#7FE001" font-size="9" font-family="monospace" text-anchor="middle">' + lim.l + ' cm</text>';
-            // The parcel, sitting on the floor
-            if (parcel) {
-                var col = (fitsOverride === false) ? '#ff5a5a' : '#7FE001';
-                s += faces(fx, ground - parcel.h * scale, parcel.w, parcel.h, parcel.l, col, true, false, 1.75);
-            }
-            svg.innerHTML = s;
+            return MolliFit.drawGauge(document.getElementById('gauge-svg'), lim, parcel, fitsOverride);
         }
         function checkFit() {
             var t = (document.querySelector('input[name="item-type"]:checked') || {}).value || 'small';
@@ -1922,47 +1888,28 @@
             var chargeable = Math.max(kg, volWeight);
             window.__chargeableKg = chargeable;
 
-            // One universal capacity for every route — a "yes" is always a yes,
-            // regardless of where it's going.
-            var CAPS = {
-                small:   { maxLong: 35, maxSide: 25, kg: 1,  vcap: 15000 },
-                package: { maxLong: 60, maxSide: 60, kg: 2,  vcap: 31500 },
-                box:     { maxLong: 60, maxSide: 40, kg: 10, vcap: 96000 }
-            };
-            function fitsCap(cap) {
-                var d = [l, w, h].slice().sort(function (a, b) { return b - a; });
-                if (d[0] > cap.maxLong) return false;
-                if (d[1] > cap.maxSide || d[2] > cap.maxSide) return false;
-                if (kg > cap.kg) return false;
-                if (l * w * h > cap.vcap + 1) return false;
-                return true;
-            }
-
-            // Which tier will we charge? An item too big for its tier but still
-            // fitting the next one up is auto-upgraded.
-            var order = ['small', 'package', 'box'];
-            var startIdx = Math.max(0, order.indexOf(t));
-            var effective = t, upgraded = false, fits = false;
-            for (var ci = startIdx; ci < order.length; ci++) {
-                if (fitsCap(CAPS[order[ci]])) { fits = true; effective = order[ci]; upgraded = (ci > startIdx); break; }
-            }
+            // Capacity depends on the route: Zone 1 (city centre) runs cargo
+            // bikes with a bigger, heavier box; Zone 2 (greater Dublin) standard
+            // bikes. Sourced from fit-core.js so booking scales to the true max.
+            var zone = MolliFit.normZone(getAutoDetectedZone());
+            var r = MolliFit.classify(l, w, h, kg, t, zone);
+            var fits = r.fits, effective = r.effective, upgraded = r.upgraded;
             window.__effectiveSize = effective;
 
-            function tierName(k) { return k === 'box' ? 'Box' : (k === 'small' ? 'Small parcel' : 'Parcel'); }
-            var ecap = CAPS[effective];
+            function tierName(k) { return MolliFit.TIER_NAME[k]; }
+            var ecap = r.caps;
             var eName = tierName(effective);
-            var maxH = Math.min(ecap.maxSide, Math.max(0, Math.floor(ecap.vcap / (l * w))));
-            var elim = { l: ecap.maxLong, w: ecap.maxSide, h: ecap.maxSide, vcap: ecap.vcap };
+            var elim = { l: ecap.maxLong, w: ecap.maxSide, h: ecap.maxSide };
 
             drawGauge(elim, { w: w, h: h, l: l }, fits);
 
             ['dim-l', 'dim-w', 'dim-h', 'dim-kg'].forEach(function (id) { document.getElementById(id).classList.toggle('over', !fits); });
             ['val-l', 'val-w', 'val-h', 'val-kg'].forEach(function (id) { document.getElementById(id).classList.toggle('over', !fits); });
 
-            var carrierTxt = 'Fits any Molli route \u00b7 up to 60\u00d740\u00d740 cm, 10 kg';
+            var carrierTxt = (zone === 'zone1' ? 'Cargo-bike route' : 'Greater Dublin route') + ' \u00b7 up to ' + MolliFit.maxLabel(zone);
             var volEl = document.getElementById('vol-line');
             if (volEl) {
-                volEl.innerHTML = '<span style="color:#7FE001;font-weight:700">' + carrierTxt + '</span>';
+                volEl.innerHTML = '<span style="color:#7FE001;font-weight: 500">' + carrierTxt + '</span>';
             }
 
             var v = document.getElementById('sizer-verdict');
@@ -1976,14 +1923,12 @@
                 v.textContent = '\u2713 Fits the ' + eName + '.';
             } else {
                 window.__fitsOk = false; v.className = 'sizer-verdict bad';
-                var cap = CAPS.box, reasons = [];
-                var d = [l, w, h].slice().sort(function (a, b) { return b - a; });
-                if (d[0] > cap.maxLong) reasons.push('longest side over ' + cap.maxLong + ' cm');
-                if (d[1] > cap.maxSide || d[2] > cap.maxSide) reasons.push('over ' + cap.maxSide + ' cm on a side');
-                if (kg > cap.kg) reasons.push('over ' + cap.kg + ' kg');
-                if (vol > cap.vcap + 1) reasons.push('too bulky');
-                v.textContent = '\u2717 Too big for a bike run \u2014 '
-                    + reasons.join('; ') + '. Please split it into smaller parcels.';
+                var reasons = r.reasons;
+                v.textContent = '\u2717 Too big for this route \u2014 '
+                    + (reasons.join('; ') || 'over the limit')
+                    + (zone === 'zone2'
+                        ? '. It may fit a city-centre cargo-bike run, or split it into smaller parcels.'
+                        : '. Please split it into smaller parcels.');
             }
             // Refresh price against the effective (possibly upgraded) tier
             updateItemPrice();

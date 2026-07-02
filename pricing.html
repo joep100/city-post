@@ -24,7 +24,7 @@
     .calc-left { padding: 40px; border-right: 1px solid var(--line); position: relative; overflow: hidden; }
     .calc-left .glow { position: absolute; right: -120px; top: -120px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(var(--accent-rgb), .1), transparent 70%); pointer-events: none; }
     .calc-left .inner { position: relative; }
-    .calc-cap { font-size: 11px; color: var(--soft); font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+    .calc-cap { font-size: 11px; color: var(--soft); font-weight: 500; letter-spacing: .18em; text-transform: uppercase; }
     .base-strike { font-family: var(--font-mono); font-size: 22px; font-weight: 500; color: var(--soft); margin-top: 14px; text-decoration: line-through; opacity: 0; transition: opacity .3s; }
     .base-strike.show { opacity: .5; }
     .big-total { font-family: var(--font-mono); font-size: 144px; font-weight: 700; letter-spacing: -0.07em; line-height: .9; color: var(--accent); margin: -12px 0 0; }
@@ -35,20 +35,20 @@
     .ledger .row .amt { font-family: var(--font-mono); color: var(--ink); }
     .ledger .row .amt.accent { color: var(--accent); }
     .included { margin-top: 28px; }
-    .included .cap { font-size: 11px; color: var(--soft); font-weight: 700; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 12px; }
+    .included .cap { font-size: 11px; color: var(--soft); font-weight: 500; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 12px; }
     .included li { padding: 8px 0; border-top: 1px solid var(--line); font-size: 14px; display: grid; grid-template-columns: 20px 1fr; gap: 10px; align-items: baseline; }
     .included li:first-child { border-top: none; }
-    .included li .tick { color: var(--accent); font-weight: 700; }
+    .included li .tick { color: var(--accent); font-weight: 500; }
 
     .calc-right { padding: 40px; }
     .calc-right h2 { font-size: 32px; font-weight: 800; letter-spacing: -0.025em; margin: 8px 0 0; }
-    .group-cap { font-size: 11px; color: var(--soft); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 10px; }
+    .group-cap { font-size: 11px; color: var(--soft); font-weight: 500; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 10px; }
     .opt-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 18px; }
     .opt-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 18px; }
     .opt { all: unset; cursor: pointer; padding: 14px 16px; border-radius: 12px; background: var(--bg); border: 1.5px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
     .opt.size { text-align: center; flex-direction: column; padding: 14px 8px; }
     .opt.on { background: var(--accent-tint); border-color: var(--accent); }
-    .opt .t { font-size: 15px; font-weight: 700; color: var(--ink); }
+    .opt .t { font-size: 15px; font-weight: 500; color: var(--ink); }
     .opt .s { font-size: 11px; color: var(--soft); margin-top: 2px; }
     .opt.size .s { font-family: var(--font-mono); font-size: 10px; }
     .opt .tag { font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--soft); }
@@ -64,7 +64,7 @@
     .addon .sq { width: 20px; height: 20px; border-radius: 5px; border: 2px solid var(--muted); display: flex; align-items: center; justify-content: center; }
     .addon.on .sq { background: var(--accent); border-color: var(--accent); }
     .addon.on .sq::after { content: '\2713'; color: var(--bg); font-size: 12px; font-weight: 900; }
-    .addon .t { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; color: var(--ink); }
+    .addon .t { font-size: 15px; font-weight: 500; letter-spacing: -0.01em; color: var(--ink); }
     .addon .s { font-size: 12px; color: var(--soft); margin-top: 2px; }
     .addon .amt { font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: var(--soft); }
     .addon.on .amt { color: var(--accent); }
@@ -83,7 +83,7 @@
     .invoice .paid { font-size: 11px; color: var(--accent); font-family: var(--font-mono); }
     .invoice .r { display: flex; justify-content: space-between; padding: 8px 0; font-size: 13px; color: var(--soft); border-bottom: 1px solid var(--line); }
     .invoice .r .amt { font-family: var(--font-mono); color: var(--ink); }
-    .invoice .total { display: flex; justify-content: space-between; padding: 14px 0 0; font-size: 16px; font-weight: 700; }
+    .invoice .total { display: flex; justify-content: space-between; padding: 14px 0 0; font-size: 16px; font-weight: 500; }
     .invoice .total .amt { color: var(--accent); font-family: var(--font-mono); font-size: 22px; }
 
     /* FAQ */
@@ -91,7 +91,7 @@
     .faqs { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
     .faq { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 22px; }
     .faq .top { display: flex; justify-content: space-between; align-items: flex-start; }
-    .faq .q { font-size: 18px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 10px; padding-right: 12px; }
+    .faq .q { font-size: 18px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 10px; padding-right: 12px; }
     .faq .plus { color: var(--accent); font-size: 18px; font-weight: 800; }
     .faq .a { font-size: 14px; color: var(--soft); margin: 0; line-height: 1.55; }
 
@@ -116,7 +116,7 @@
   <header class="topbar">
     <a class="logo" href="index.html">
       <span class="logo-mark"><span>&rsaquo;</span></span>
-      <span class="logo-word">Molli</span>
+      <span class="logo-word">m<span class="o-wheel"></span>lli</span>
     </a>
     <nav class="topnav">
       <a href="pricing.html" class="active">Pricing</a>
@@ -242,8 +242,8 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div>
-      <a class="logo" href="index.html"><span class="logo-mark"><span>&rsaquo;</span></span><span class="logo-word">Molli</span></a>
-      <div class="tag">molli.ie · Dublin's same-day parcel network</div>
+      <a class="logo" href="index.html"><span class="logo-mark"><span>&rsaquo;</span></span><span class="logo-word">m<span class="o-wheel"></span>lli</span></a>
+      <div class="tag">molli.ie · Dublin's same-day parcel network<br /><span style="color:var(--muted)">Through streets broad &amp; narrow.</span></div>
     </div>
     <div class="col"><div class="col-title">Send</div><a href="booking.html">Parcels</a><a href="booking.html">Documents</a><a href="booking.html">Same-day</a><a href="pricing.html">Bulk &amp; API</a></div>
     <div class="col"><div class="col-title">Business</div><a href="pricing.html">Account pricing</a><a href="pricing.html">API &amp; integrations</a><a href="pricing.html">Case studies</a><a href="pricing.html">Contact sales</a></div>
@@ -256,7 +256,7 @@
     var SIZES = [
       { id: 'small',   label: 'Small parcel', blurb: 'Perfume box, phone · Max 1kg', price: 7.99 },
       { id: 'package', label: 'Parcel',  blurb: 'Shoebox, a book · Max 2kg',   price: 8.99 },
-      { id: 'box',     label: 'Box',     blurb: 'Wine case, hamper · up to 10kg', price: 9.99 }
+      { id: 'box',     label: 'Box',     blurb: 'Wine case, hamper · up to 30kg', price: 9.99 }
     ];
     var ZONE2_FEE = 2.00;
     // Box: stepped by chargeable weight — €9.99 base, +€1 per 2 kg, up to €24.99 at 30 kg.
@@ -361,7 +361,7 @@
         { q: 'Do I need to drop it at a post office?', a: 'No — that\u2019s the whole point. We collect from your door. Book before 2pm and a courier is with you this afternoon. No queues, no ID, no paperwork.' },
         { q: 'How does same-day work?', a: 'We run two collection waves a day. Order by 2pm and it\u2019s collected and delivered the same day, anywhere in Dublin\u2019s 24 postal codes. Order after 2pm and it\u2019s there before 1pm the next day \u2014 same flat price either way.' },
         { q: 'What if I send 10+ a week?', a: 'Open a Business account — same per-parcel pricing, plus invoicing, API, CSV bulk-booking, and a named contact. No subscription.' },
-        { q: 'What can\u2019t I send?', a: 'Hazardous goods, restricted items, anything heavier than 8kg, or anything that won\u2019t fit in a 60×40×40cm box.' },
+        { q: 'What can\u2019t I send?', a: 'Hazardous goods, restricted items, anything heavier than 30kg, or anything bigger than our 80\u00d760\u00d760cm cargo box. Greater-Dublin routes cap smaller, at 40\u00d730\u00d730cm and 8kg.' },
         { q: 'How does the signed-for option work?', a: 'Add Signature required for €1.99 — we capture the recipient\u2019s signature on delivery alongside the photo. No trip to the post office required.' },
         { q: 'Can I integrate with my shop?', a: 'Yes — our API + native Shopify, WooCommerce, and Squarespace plugins are free on Business accounts.' }
       ];

@@ -1,0 +1,9 @@
+{
+  "name": "citypost-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CityPost — same-day collection, next-day delivery across Dublin.",
+  "dependencies": {
+    "stripe": "^16.0.0"
+  }
+}

@@ -23,7 +23,7 @@
     /* Left — pick + result */
     .fit-panel { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
     .fit-panel + .fit-panel { margin-top: 18px; }
-    .fit-label { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--soft); font-weight: 700; margin-bottom: 14px; }
+    .fit-label { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--soft); font-weight: 500; margin-bottom: 14px; }
     .preset-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
     .preset {
       display: flex; flex-direction: column; gap: 4px; text-align: left;
@@ -33,8 +33,8 @@
     .preset:hover { border-color: rgba(var(--accent-rgb), .5); }
     .preset:active { transform: translateY(1px); }
     .preset.on { border-color: var(--accent); background: rgba(var(--accent-rgb), .1); }
-    .preset .pl { font-size: 13.5px; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
-    .preset .pd { font-family: var(--font-mono); font-size: 11px; color: var(--muted); letter-spacing: -0.02em; }
+    .preset .pl { font-size: 13.5px; font-weight: 500; color: var(--ink); letter-spacing: -0.01em; }
+    .preset .pd { font-family: var(--font-mono); font-size: 11px; color: var(--soft); letter-spacing: -0.02em; }
 
     /* Result card */
     .verdict { display: flex; align-items: center; gap: 16px; }
@@ -70,14 +70,14 @@
     .cage-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
     .cage-head .ttl { font-family: var(--font-mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
     .route-toggle { display: inline-flex; background: var(--bg); border: 1px solid var(--line); border-radius: 9px; padding: 3px; gap: 3px; }
-    .route-toggle button { font-size: 11px; font-weight: 700; color: var(--soft); background: none; border: none; border-radius: 6px; padding: 5px 9px; cursor: pointer; letter-spacing: -0.01em; }
+    .route-toggle button { font-size: 11px; font-weight: 500; color: var(--soft); background: none; border: none; border-radius: 6px; padding: 5px 9px; cursor: pointer; letter-spacing: -0.01em; }
     .route-toggle button.on { background: rgba(var(--accent-rgb), .16); color: var(--accent); }
     .cage-svg { display: block; margin: 2px auto 4px; width: 100%; max-width: 360px; height: auto; }
     .carrier-note { text-align: center; font-family: var(--font-mono); font-size: 11.5px; color: var(--accent); font-weight: 700; margin: 2px 0 14px; letter-spacing: -0.01em; }
 
     .slider-rows { display: grid; gap: 13px; }
     .slider-row .slider-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; }
-    .slider-row label { font-size: 12.5px; font-weight: 700; color: rgba(255,255,255,.8); }
+    .slider-row label { font-size: 12.5px; font-weight: 500; color: rgba(255,255,255,.8); }
     .slider-row .sval { font-family: var(--font-mono); font-size: 12.5px; color: var(--accent); font-weight: 700; letter-spacing: -0.02em; }
     .slider-row .sval.over { color: #ff5a5a; }
     .slider-row input[type="range"] { -webkit-appearance: none; appearance: none; width: 100%; height: 5px; border-radius: 5px; background: rgba(255,255,255,.12); outline: none; }
@@ -93,7 +93,7 @@
     .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .how-card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
     .how-card .hic { width: 40px; height: 40px; border-radius: 10px; background: rgba(var(--accent-rgb), .12); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
-    .how-card h3 { font-size: 16px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 6px; }
+    .how-card h3 { font-size: 16px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 6px; }
     .how-card p { font-size: 13.5px; color: var(--soft); font-weight: 500; line-height: 1.55; }
     .how-card .mono { font-family: var(--font-mono); color: var(--ink); font-weight: 700; }
 
@@ -122,7 +122,7 @@
   <header class="topbar">
     <a class="logo" href="index.html">
       <span class="logo-mark"><span>&rsaquo;</span></span>
-      <span class="logo-word">Molli</span>
+      <span class="logo-word">m<span class="o-wheel"></span>lli</span>
     </a>
     <nav class="topnav">
       <a href="pricing.html">Pricing</a>
@@ -186,9 +186,13 @@
       <div class="cage-card">
         <div class="cage-head">
           <span class="ttl">Carrier gauge</span>
+          <div class="route-toggle" id="route-toggle">
+            <button type="button" data-zone="zone1" class="on">City centre</button>
+            <button type="button" data-zone="zone2">Greater Dublin</button>
+          </div>
         </div>
         <svg class="cage-svg" id="gauge-svg" viewBox="0 0 360 276"></svg>
-        <div class="carrier-note" id="carrier-note">Fits any Molli route &middot; up to 60&times;40&times;40 cm, 10 kg</div>
+        <div class="carrier-note" id="carrier-note">Cargo-bike route &middot; up to 80&times;60&times;60 cm, 30 kg</div>
 
         <div class="slider-rows">
           <div class="slider-row">
@@ -215,12 +219,12 @@
   <!-- HOW IT WORKS -->
   <section class="fit-how">
     <h2>How the gauge works</h2>
-    <p class="sub">Everything travels by bike, so it has to fit the box on the back. Simple as that.</p>
+    <p class="sub">Everything travels by bike — so the only question is how big the bike's box is on your route.</p>
     <div class="how-grid">
       <div class="how-card">
         <div class="hic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M6 17h6l4-7-3-2"/><path d="M13 8h3"/></svg></div>
-        <h3>One box, every route</h3>
-        <p>Everything travels by bike, so there's a single size that fits every Molli delivery anywhere in Dublin: up to <span class="mono">60&times;40&times;40&nbsp;cm, 10&nbsp;kg</span>. A yes is always a yes &mdash; no matter where it's going.</p>
+        <h3>Bigger box in the city centre</h3>
+        <p>City-centre runs (Dublin 1&ndash;8) go by <b>cargo bike</b> &mdash; up to <span class="mono">80&times;60&times;60&nbsp;cm, 30&nbsp;kg</span>. Greater Dublin (D9&ndash;24) is up to <span class="mono">40&times;30&times;30&nbsp;cm, 8&nbsp;kg</span>. Flip the toggle on the gauge to check your route.</p>
       </div>
       <div class="how-card">
         <div class="hic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="7" height="7" rx="1"/><rect x="14" y="5" width="7" height="13" rx="1"/></svg></div>
@@ -243,8 +247,8 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div>
-      <a class="logo" href="index.html"><span class="logo-mark"><span>&rsaquo;</span></span><span class="logo-word">Molli</span></a>
-      <div class="tag">molli.ie &middot; Dublin's same-day parcel network</div>
+      <a class="logo" href="index.html"><span class="logo-mark"><span>&rsaquo;</span></span><span class="logo-word">m<span class="o-wheel"></span>lli</span></a>
+      <div class="tag">molli.ie &middot; Dublin's same-day parcel network<br /><span style="color:var(--muted)">Through streets broad &amp; narrow.</span></div>
     </div>
     <div class="col"><div class="col-title">Send</div><a href="booking.html">Parcels</a><a href="fit.html">Will it fit?</a><a href="booking.html">Same-day</a><a href="pricing.html">Bulk &amp; API</a></div>
     <div class="col"><div class="col-title">Business</div><a href="business.html">Account pricing</a><a href="pricing.html">API &amp; integrations</a><a href="pricing.html">Case studies</a><a href="business.html">Contact sales</a></div>
@@ -271,6 +275,20 @@
         note: null
       };
       var activePreset = 'perfume';
+      var zone = 'zone1'; // city centre / cargo bike by default (the bigger box)
+
+      // Route toggle — city centre (cargo bike) vs greater Dublin (standard bike)
+      var routeToggle = document.getElementById('route-toggle');
+      if (routeToggle) {
+        routeToggle.querySelectorAll('button').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            zone = btn.getAttribute('data-zone');
+            routeToggle.querySelectorAll('button').forEach(function (b) { b.classList.remove('on'); });
+            btn.classList.add('on');
+            update();
+          });
+        });
+      }
 
       // Build preset buttons
       F.PRESETS.forEach(function (p) {
@@ -306,7 +324,7 @@
         els.svh.textContent = h + ' cm';
         els.svkg.textContent = kg.toFixed(1) + ' kg';
 
-        var r = F.classify(l, w, h, kg, 'small');
+        var r = F.classify(l, w, h, kg, 'small', zone);
         var cap = r.caps;
         var lim = { l: cap.maxLong, w: cap.maxSide, h: cap.maxSide };
         F.drawGauge(els.svg, lim, { l: l, w: w, h: h }, r.fits);
@@ -315,7 +333,9 @@
         [els.l, els.w, els.h, els.kg].forEach(function (x) { x.classList.toggle('over', !r.fits); });
         [els.svl, els.svw, els.svh, els.svkg].forEach(function (x) { x.classList.toggle('over', !r.fits); });
 
-        els.carrier.textContent = 'Fits any Molli route \u00b7 up to 60\u00d740\u00d740 cm, 10 kg';
+        var env = F.envelope(zone);
+        els.carrier.textContent = (zone === 'zone1' ? 'Cargo-bike route' : 'Greater Dublin route')
+          + ' \u00b7 up to ' + F.maxLabel(zone);
 
         var name = F.TIER_NAME[r.effective];
         if (r.fits) {
@@ -336,9 +356,11 @@
           els.vmark.innerHTML = '&#10007;';
           els.cta.classList.add('bad');
           els.priceRow.classList.add('hide');
-          els.vt.textContent = 'Too big for a bike run';
+          els.vt.textContent = 'Too big for this route';
           els.vs.textContent = (r.reasons.join('; ') || 'over the limit')
-            + '. Send it as two parcels \u2014 still same-day.';
+            + (zone === 'zone2'
+                ? '. It may fit a city-centre cargo-bike run \u2014 or send it as two parcels.'
+                : '. Send it as two parcels \u2014 still same-day.');
         }
       }
 

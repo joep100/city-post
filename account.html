@@ -58,6 +58,12 @@
         }
         .logo-mark span { color: #0a0a0a; font-weight: 900; font-size: 18px; transform: skewX(12deg); }
         .logo-word { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; text-transform: lowercase; }
+        .i-wheel { position: relative; display: inline-block; z-index: 0; }
+        .i-wheel::before {
+          content: ""; position: absolute; z-index: -1; left: 50%; transform: translateX(-50%);
+          bottom: 0.76em; width: 0.42em; height: 0.42em;
+          background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239CFF2E' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='8'/%3E%3Ccircle cx='12' cy='12' r='2' fill='%239CFF2E' stroke='none'/%3E%3Cline x1='12' y1='4' x2='12' y2='20'/%3E%3Cline x1='4' y1='12' x2='20' y2='12'/%3E%3Cline x1='6.3' y1='6.3' x2='17.7' y2='17.7'/%3E%3Cline x1='17.7' y1='6.3' x2='6.3' y2='17.7'/%3E%3C/svg%3E") center/contain no-repeat;
+        }
         nav { display: flex; gap: 22px; align-items: center; }
         .nav-link {
             font-size: 15px; color: var(--soft); text-decoration: none; cursor: pointer;
@@ -93,7 +99,7 @@
         .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 32px; }
         .detail { }
         .detail .k {
-            font-size: 11px; color: var(--soft); letter-spacing: .1em; text-transform: uppercase; font-weight: 700; margin-bottom: 4px;
+            font-size: 11px; color: var(--soft); letter-spacing: .1em; text-transform: uppercase; font-weight: 500; margin-bottom: 4px;
         }
         .detail .v { font-size: 16px; font-weight: 600; }
         .detail .v.mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
@@ -132,12 +138,12 @@
         .addr-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
         .addr-card { position: relative; background: var(--panel); border: 1px solid var(--line-soft); border-radius: 14px; padding: 18px 20px; }
         .addr-card.default { border-color: var(--accent); }
-        .addr-card .tag { font-size: 13px; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; display: block; margin-bottom: 8px; }
+        .addr-card .tag { font-size: 13px; font-weight: 500; color: var(--ink); letter-spacing: -0.01em; display: block; margin-bottom: 8px; }
         .addr-card .tag.home { color: var(--accent); }
         .addr-card .lines { font-size: 14px; color: #d6d6d6; line-height: 1.6; }
         .addr-card { padding-bottom: 44px; }
         .addr-actions { position: absolute; bottom: 11px; left: 20px; right: 20px; display: flex; gap: 16px; }
-        .addr-link { background: transparent; border: none; padding: 0; font-family: inherit; font-size: 12px; font-weight: 700; cursor: pointer; color: var(--accent); }
+        .addr-link { background: transparent; border: none; padding: 0; font-family: inherit; font-size: 12px; font-weight: 500; cursor: pointer; color: var(--accent); }
         .addr-link:hover { text-decoration: underline; }
         .addr-link.del { color: #ff6b6b; margin-left: auto; }
         .addr-card.default .set-def { display: none; }
@@ -145,7 +151,7 @@
         .amodal.open { display: flex; }
         .amodal .box2 { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 24px; width: 100%; max-width: 420px; }
         .amodal h3 { font-size: 20px; font-weight: 800; margin-bottom: 16px; letter-spacing: -0.02em; }
-        .amodal label { display: block; font-size: 11px; color: var(--soft); text-transform: uppercase; letter-spacing: .08em; font-weight: 700; margin-bottom: 6px; }
+        .amodal label { display: block; font-size: 11px; color: var(--soft); text-transform: uppercase; letter-spacing: .08em; font-weight: 500; margin-bottom: 6px; }
         .amodal input, .amodal textarea { width: 100%; padding: 11px 13px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); font-family: inherit; font-size: 15px; font-weight: 600; margin-bottom: 14px; }
         .amodal textarea { min-height: 88px; resize: vertical; line-height: 1.5; }
         .amodal .actions { display: flex; gap: 10px; }
@@ -164,10 +170,10 @@
             width: 40px; height: 40px; border-radius: 10px; background: var(--panel2);
             display: flex; align-items: center; justify-content: center; flex-shrink: 0;
         }
-        .b-main .b-route { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; }
+        .b-main .b-route { font-size: 15px; font-weight: 500; letter-spacing: -0.01em; }
         .b-main .b-meta { font-size: 12px; color: var(--soft); font-family: 'JetBrains Mono', ui-monospace, monospace; margin-top: 2px; }
         .b-status {
-            font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+            font-size: 11px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase;
             padding: 5px 10px; border-radius: 999px; white-space: nowrap;
         }
         .b-status.delivered { background: var(--accent-tint); color: var(--accent); }
@@ -178,7 +184,7 @@
 
         .tabs { display: flex; gap: 6px; margin-bottom: 16px; }
         .tab {
-            padding: 8px 14px; font-size: 13px; font-weight: 700; border-radius: 999px; cursor: pointer;
+            padding: 8px 14px; font-size: 13px; font-weight: 500; border-radius: 999px; cursor: pointer;
             background: transparent; color: var(--soft); border: 1px solid var(--line); font-family: inherit;
         }
         .tab.active { background: var(--accent); color: #0a0a0a; border-color: var(--accent); }
@@ -193,7 +199,7 @@
         .field { margin-bottom: 14px; }
         .field label {
             display: block; font-size: 11px; color: var(--soft); letter-spacing: .08em;
-            text-transform: uppercase; font-weight: 700; margin-bottom: 6px;
+            text-transform: uppercase; font-weight: 500; margin-bottom: 6px;
         }
         .field input {
             width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px;
@@ -204,7 +210,7 @@
         .field input:focus { outline: none; border-color: var(--accent); background: var(--panel2); }
         .btn-primary {
             width: 100%; padding: 14px; border: none; border-radius: 10px; background: var(--accent);
-            color: #0a0a0a; font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer; transition: background .15s;
+            color: #0a0a0a; font-family: inherit; font-size: 15px; font-weight: 500; cursor: pointer; transition: background .15s;
         }
         .btn-primary:hover { background: #93f01a; }
 
@@ -221,7 +227,7 @@
         <div class="header-content">
             <a class="logo-lockup" href="index.html" style="text-decoration: none; color: inherit;">
                 <span class="logo-mark"><span>›</span></span>
-                <span class="logo-word">Molli</span>
+                <span class="logo-word">moll<span class="i-wheel">ı</span></span>
             </a>
             <nav>
                 <a class="nav-link" href="index.html">Home</a>
@@ -248,7 +254,7 @@
             <div class="field"><label>Password</label><input type="password" placeholder="••••••••"></div>
             <button class="btn-primary" onclick="createAccount()">Create account</button>
             <div style="text-align: center; font-size: 13px; color: var(--soft); margin-top: 16px;">
-                Already have an account? <span style="color: var(--accent); cursor: pointer; font-weight: 700;" onclick="toggleAuth()">Sign in</span>
+                Already have an account? <span style="color: var(--accent); cursor: pointer; font-weight: 500;" onclick="toggleAuth()">Sign in</span>
             </div>
         </div>
     </div>
@@ -271,7 +277,7 @@
             .credit-card { background: linear-gradient(135deg, rgba(127,224,1,.14), var(--panel)); border: 1px solid rgba(127,224,1,.35); border-radius: 16px; padding: 26px; }
             .credit-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
             .credit-bal { font-family: var(--font-mono); font-size: 52px; font-weight: 700; letter-spacing: -0.03em; color: var(--accent); line-height: 1; }
-            .credit-lbl { font-size: 11px; color: var(--soft); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 8px; }
+            .credit-lbl { font-size: 11px; color: var(--soft); font-weight: 500; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 8px; }
             .cswitch { position: relative; display: inline-block; width: 44px; height: 26px; flex-shrink: 0; }
             .cswitch input { opacity: 0; width: 0; height: 0; position: absolute; }
             .cswitch .sl { position: absolute; inset: 0; background: var(--panel2); border: 1px solid var(--line); border-radius: 999px; cursor: pointer; transition: background .2s; }

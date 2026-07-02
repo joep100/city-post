@@ -38,7 +38,7 @@
       display: flex; align-items: center; justify-content: center; }
     .cutoff .co-body { min-width: 0; }
     .cutoff .co-lead { font-size: 13px; color: var(--soft); font-weight: 600; letter-spacing: .01em; }
-    .cutoff .co-main { font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; margin-top: 1px; }
+    .cutoff .co-main { font-size: 16px; font-weight: 500; color: var(--ink); letter-spacing: -0.01em; margin-top: 1px; }
     .cutoff .co-clock { font-family: var(--font-mono); color: var(--accent); letter-spacing: -0.02em; }
     .cutoff.closed { background: rgba(255,255,255,.04); border-color: var(--line); }
     .cutoff.closed .co-ic { background: rgba(255,255,255,.06); }
@@ -59,9 +59,14 @@
     .bw-field .v { font-size: 15px; font-weight: 600; margin-top: 4px; }
     .bw-est { font-size: 12px; color: var(--soft); margin-top: 12px; font-family: var(--font-mono); }
 
+    .verticals { padding: 44px 40px; border-bottom: 1px solid var(--line); }
+    .vert-lead { font-size: 16px; color: var(--soft); max-width: 620px; margin: 12px 0 22px; line-height: 1.55; }
+    .vert-row { display: flex; flex-wrap: wrap; gap: 10px; }
+    .vert { font-size: 14px; font-weight: 500; color: var(--soft); border: 1px solid var(--line); border-radius: 999px; padding: 9px 16px; letter-spacing: -0.01em; }
+    .vert--hero { color: var(--ink); border-color: rgba(var(--accent-rgb), .45); background: rgba(var(--accent-rgb), .07); }
     .trust { margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--line); display: flex; align-items: center; gap: 36px; flex-wrap: wrap; }
     .trust .lbl { font-size: 11px; color: var(--muted); letter-spacing: .14em; text-transform: uppercase; font-weight: 600; }
-    .trust .name { font-size: 18px; font-weight: 700; color: var(--muted); letter-spacing: -0.01em; }
+    .trust .name { font-size: 18px; font-weight: 500; color: var(--muted); letter-spacing: -0.01em; }
 
     /* ===== Live departures board ===== */
     .dep-board { font-family: var(--font-mono); background: #0c0f0c; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; max-width: 1100px; margin: 0 auto; }
@@ -77,7 +82,7 @@
     .dep-row .code { color: var(--soft); font-size: 13px; }
     .dep-row .dest { color: #fff; font-weight: 600; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .dep-row .eta { color: var(--soft); }
-    .dep-row .status { justify-self: start; padding: 6px 12px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: .05em; white-space: nowrap; position: relative; transform-origin: center; }
+    .dep-row .status { justify-self: start; padding: 6px 12px; border-radius: 4px; font-size: 11px; font-weight: 500; letter-spacing: .05em; white-space: nowrap; position: relative; transform-origin: center; }
     .dep-row .status::after { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: rgba(0,0,0,.45); }
     .s-collected, .s-enroute { background: rgba(var(--accent-rgb), .16); color: var(--accent); }
     .s-out { background: var(--accent); color: #06140d; }
@@ -90,8 +95,8 @@
     .usp h2 { font-size: 56px; font-weight: 800; letter-spacing: -0.03em; margin: 12px 0 0; line-height: .98; max-width: 880px; }
     .usp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 32px; }
     .usp-card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 26px; position: relative; }
-    .usp-card .k { font-size: 11px; color: var(--muted); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
-    .usp-card h3 { font-size: 22px; font-weight: 700; color: var(--soft); letter-spacing: -0.01em; margin: 10px 0 16px; }
+    .usp-card .k { font-size: 11px; color: var(--muted); font-weight: 500; letter-spacing: .14em; text-transform: uppercase; }
+    .usp-card h3 { font-size: 22px; font-weight: 500; color: var(--soft); letter-spacing: -0.01em; margin: 10px 0 16px; }
     .usp-card.neg h3 { text-decoration: line-through; text-decoration-color: var(--muted); }
     .usp-card ul li { font-size: 13px; color: var(--soft); line-height: 1.7; }
     .usp-card.us { background: var(--accent); color: var(--bg); }
@@ -105,7 +110,7 @@
     .how h2 .sub { color: var(--soft); font-style: italic; font-weight: 500; }
     .step { display: grid; grid-template-columns: 80px 1fr; gap: 24px; padding: 20px 0; border-top: 1px solid var(--line); align-items: baseline; }
     .step .n { font-family: var(--font-mono); font-size: 32px; font-weight: 700; color: var(--accent); letter-spacing: -0.02em; }
-    .step .t { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; }
+    .step .t { font-size: 24px; font-weight: 500; letter-spacing: -0.02em; }
     .step .b { font-size: 15px; color: var(--soft); margin-top: 6px; line-height: 1.55; }
     .quote-card { margin-top: 36px; padding: 28px; background: var(--panel); border-radius: 14px; border: 1px solid var(--line); position: relative; }
     .quote-badge { position: absolute; top: -8px; left: 22px; padding: 4px 10px; background: var(--accent); color: var(--bg); font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; border-radius: 4px; }
@@ -120,7 +125,7 @@
     .phone-map { height: 200px; position: relative; background: radial-gradient(circle at 40% 60%, rgba(var(--accent-rgb), .16), transparent 55%), #1a1a1a;
       background-image: linear-gradient(rgba(var(--accent-rgb), .08) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--accent-rgb), .08) 1px, transparent 1px);
       background-size: 24px 24px; }
-    .phone-status { position: absolute; top: 14px; left: 14px; padding: 6px 10px; background: var(--accent); color: var(--bg); border-radius: 6px; font-size: 11px; font-weight: 700; }
+    .phone-status { position: absolute; top: 14px; left: 14px; padding: 6px 10px; background: var(--accent); color: var(--bg); border-radius: 6px; font-size: 11px; font-weight: 500; }
     .phone-pid { position: absolute; top: 14px; right: 14px; font-family: var(--font-mono); font-size: 10px; color: var(--soft); }
     .phone-body { padding: 18px; }
     .phone-eta-row { display: flex; justify-content: space-between; align-items: baseline; }
@@ -148,7 +153,7 @@
     .tier.featured { background: var(--accent); color: var(--bg); border-color: var(--accent); }
     .tier-flag { position: absolute; top: -10px; left: 14px; background: var(--accent); color: var(--bg); padding: 4px 10px; font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; border-radius: 4px; }
     .tier.featured .tier-flag { background: var(--bg); color: var(--accent); }
-    .tier .name { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-top: 6px; }
+    .tier .name { font-size: 22px; font-weight: 500; letter-spacing: -0.02em; margin-top: 6px; }
     .tier .blurb { font-size: 13px; color: var(--soft); margin-top: 4px; }
     .tier.featured .blurb { color: var(--bg); opacity: .85; }
     .tier .price { font-family: var(--font-mono); margin-top: 22px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; color: var(--accent); }
@@ -169,7 +174,7 @@
     .care-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 34px; }
     .care-card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 24px; }
     .care-ic { width: 42px; height: 42px; border-radius: 11px; background: var(--accent-tint); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
-    .care-card h3 { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 8px; }
+    .care-card h3 { font-size: 17px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 8px; }
     .care-card p { font-size: 13px; color: var(--soft); line-height: 1.55; }
     @media (max-width: 860px) { .care-grid { grid-template-columns: 1fr 1fr; } }
 
@@ -228,18 +233,18 @@
   <header class="topbar">
     <a class="logo" href="index.html">
       <span class="logo-mark"><span>&rsaquo;</span></span>
-      <span class="logo-word">Molli</span>
+      <span class="logo-word">m<span class="o-wheel"></span>lli</span>
     </a>
     <nav class="topnav">
+      <a href="business.html">For retailers</a>
       <a href="pricing.html">Pricing</a>
       <a href="fit.html">Will it fit?</a>
-      <a href="business.html">Business</a>
       <a href="zones.html">Coverage</a>
       <a href="pricing.html#faqs">Help</a>
     </nav>
     <div class="topbar-cta">
       <a class="signin" href="account.html">Sign in</a>
-      <a class="btn btn--accent btn--sm" href="booking.html">Send a parcel &rarr;</a>
+      <a class="btn btn--accent btn--sm" href="business.html">Create business account &rarr;</a>
     </div>
   </header>
 
@@ -253,9 +258,11 @@
           Live &middot; <span class="mono-num" id="live-count">247</span> parcels moving in Dublin right now
         </span>
 
-        <h1>Order by 2pm<br />Delivered <span class="accent">today</span></h1>
+        <div class="eyebrow eyebrow--soft" style="margin:18px 0 -6px;">Through streets broad &amp; narrow</div>
 
-        <p class="blurb">Two collection runs a day across Dublin. Order before 2pm and it lands today; after 2pm it's there before 1pm tomorrow. Same-day, same flat price.</p>
+        <h1>Give your customers <span class="accent">same-day</span> delivery</h1>
+
+        <p class="blurb">Molli is Dublin's same-day parcel network for shops. Your customer orders by 2pm, it's on their doorstep tonight &mdash; tracked, photographed, handled by a local team. Built for the things people want fast and handled with care: beauty &amp; skincare, health &amp; wellness, jewellery and boutique. One account, one flat price, no fleet to run.</p>
 
         <div class="cutoff" id="cutoff">
           <div class="co-ic">
@@ -270,10 +277,14 @@
         <div class="from-line">
           <span class="lbl">Pricing from</span>
           <span class="price">&euro;7.99</span>
-          <span class="unit">per parcel</span>
+          <span class="unit">per parcel &middot; volume rates for shops</span>
         </div>
 
-        <a class="btn btn--accent btn--lg" href="booking.html" style="margin-top: 26px;">Send a parcel &rarr;</a>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:26px;">
+          <a class="btn btn--accent btn--lg" href="business.html">Create a business account &rarr;</a>
+          <a class="btn btn--ghost btn--lg" href="business.html#contact">Talk to us for volume</a>
+        </div>
+        <a href="booking.html" style="display:inline-block;margin-top:16px;font-size:14px;color:var(--soft);font-weight:600;">Just sending one parcel? Book a single delivery &rarr;</a>
       </div>
 
       <div class="hero-board">
@@ -304,19 +315,33 @@
   <div class="stats">
     <div class="stat"><div class="num">98.4%</div><div class="lbl">On-time, last 90 days</div></div>
     <div class="stat"><div class="num">12,400</div><div class="lbl">Parcels every week</div></div>
-    <div class="stat"><div class="num">4.8 / 5</div><div class="lbl">Customer rating</div></div>
+    <div class="stat"><div class="num">4.8 / 5</div><div class="lbl">Retailer rating</div></div>
   </div>
+
+  <!-- VERTICALS -->
+  <section class="verticals">
+    <div class="eyebrow">Built for</div>
+    <p class="vert-lead">The high-value, handle-with-care categories we're built around &mdash; where <span class="accent">same-day and a careful doorstep</span> win the repeat customer.</p>
+    <div class="vert-row">
+      <span class="vert vert--hero">Beauty &amp; skincare</span>
+      <span class="vert vert--hero">Health &amp; wellness</span>
+      <span class="vert vert--hero">Pharmacy</span>
+      <span class="vert">Jewellery</span>
+      <span class="vert">Boutique fashion</span>
+      <span class="vert">Gifting &amp; florists</span>
+    </div>
+  </section>
 
   <!-- USP -->
   <section class="section usp light">
-    <div class="eyebrow">Why Molli</div>
-    <h2>Dublin's only <span class="accent">same-day parcel network.</span></h2>
+    <div class="eyebrow">Why shops choose Molli</div>
+    <h2>The same-day layer for <span class="accent">Dublin retail.</span></h2>
     <div class="usp-grid">
       <div class="usp-card neg">
         <div class="k">Standard post</div>
         <h3>Two to three days.</h3>
         <ul>
-          <li>&#10007; Drop-off, then it sits in the network</li>
+          <li>&#10007; Your customer waits, then chases you</li>
           <li>&#10007; No same-day option at all</li>
           <li>&#10007; Little to no live tracking</li>
         </ul>
@@ -326,18 +351,18 @@
         <h3>Tomorrow at the earliest.</h3>
         <ul>
           <li>&#10007; Next-day collection, next-day delivery</li>
-          <li>&#10007; 4-hour pickup windows</li>
+          <li>&#10007; 4-hour pickup windows tie up your day</li>
           <li>&#10007; Nothing goes today</li>
         </ul>
       </div>
       <div class="usp-card us">
-        <div class="us-badge">US</div>
-        <div class="k">Molli</div>
-        <h3>Ordered by 2pm? It’s there tonight.</h3>
+        <div class="us-badge">MOLLI</div>
+        <div class="k">With Molli</div>
+        <h3>Order by 2pm? Your customer has it tonight.</h3>
         <ul>
-          <li>&#10003; Order by 2pm &rarr; delivered today</li>
-          <li>&#10003; After 2pm &rarr; before 1pm tomorrow</li>
-          <li>&#10003; Tracked, photo on delivery, signed-for option</li>
+          <li>&#10003; Compete with Amazon on speed, locally</li>
+          <li>&#10003; Fewer abandoned carts, more repeat buyers</li>
+          <li>&#10003; Tracked, photographed, delivered under your name</li>
         </ul>
       </div>
     </div>
@@ -345,9 +370,9 @@
 
   <!-- CARE / DELIGHT -->
   <section class="section divider-top">
-    <div class="eyebrow">The little things</div>
-    <h2 style="font-size:48px;font-weight:800;letter-spacing:-0.03em;margin:12px 0 0;max-width:820px;line-height:1;">Delivered like it's a gift. <span class="accent">Because it usually is.</span></h2>
-    <p style="font-size:16px;color:var(--soft);max-width:560px;margin:16px 0 0;line-height:1.55;">Most of what we carry means something to someone. So we treat the last hundred metres — the doorstep, the handover — like it matters.</p>
+    <div class="eyebrow">What your customer gets</div>
+    <h2 style="font-size:48px;font-weight:800;letter-spacing:-0.03em;margin:12px 0 0;max-width:820px;line-height:1;">Their experience is <span class="accent">your brand.</span></h2>
+    <p style="font-size:16px;color:var(--soft);max-width:560px;margin:16px 0 0;line-height:1.55;">The doorstep is the last thing your customer remembers about the sale. We treat every handover like it's yours — because to them, it is.</p>
     <div class="care-grid">
       <div class="care-card">
         <div class="care-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></div>
@@ -376,19 +401,19 @@
   <section class="section how">
     <div>
       <div class="eyebrow">How it works</div>
-      <h2>Three steps.<br /><span class="sub">Delivered today.</span></h2>
+      <h2>Three steps.<br /><span class="sub">Live by this afternoon.</span></h2>
 
       <div class="step">
         <div class="n">01</div>
-        <div><div class="t">Book</div><div class="b">Add pickup + drop-off, pay. Done in under a minute, on any device.</div></div>
+        <div><div class="t">Open a business account</div><div class="b">Sign up in minutes and top up a credit pack. Bulk-book a whole day's orders in one go, or sync them straight from your store.</div></div>
       </div>
       <div class="step">
         <div class="n">02</div>
-        <div><div class="t">Ordered by 2pm? Delivered today</div><div class="b">Two runs a day. Order before 2pm and it's there this evening; after 2pm, before 1pm tomorrow.</div></div>
+        <div><div class="t">We collect from your shop</div><div class="b">Two runs a day. Hand over by 2pm and your customers get it tonight; after 2pm, before 1pm tomorrow. No pickup windows tying up your counter.</div></div>
       </div>
       <div class="step">
         <div class="n">03</div>
-        <div><div class="t">Handed over, with a heads-up</div><div class="b">Tracked end to end, a photo on delivery, and the recipient gets a text when we're five minutes away — so someone's there to receive it.</div></div>
+        <div><div class="t">Delivered under your name</div><div class="b">Tracked end to end, a photo on delivery, and your customer gets a text when the rider's five minutes away — so it lands first time.</div></div>
       </div>
 
       <div class="quote-card">
@@ -432,16 +457,44 @@
     </div>
   </section>
 
+  <!-- BUILT FOR SHOPS -->
+  <section class="section divider-top">
+    <div class="eyebrow">Built for busy shops</div>
+    <h2 style="font-size:48px;font-weight:800;letter-spacing:-0.03em;margin:12px 0 0;max-width:820px;line-height:1;">One account. <span class="accent">Your whole day's orders.</span></h2>
+    <p style="font-size:16px;color:var(--soft);max-width:560px;margin:16px 0 0;line-height:1.55;">No paperwork, no per-parcel card taps, no chasing invoices. Set it up once and Molli runs quietly behind your counter.</p>
+    <div class="care-grid" style="grid-template-columns:repeat(3,1fr);">
+      <div class="care-card">
+        <div class="care-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v16"/></svg></div>
+        <h3>Bulk booking</h3>
+        <p>Paste or upload a day's worth of orders and book them all in one pass &mdash; addresses validated, labels ready, one collection.</p>
+      </div>
+      <div class="care-card">
+        <div class="care-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
+        <h3>Credit packs, auto top-up</h3>
+        <p>Pre-load credit and every booking draws down from it. Switch on auto top-up and you'll never hit a stop &mdash; no monthly invoice, no credit terms.</p>
+      </div>
+      <div class="care-card">
+        <div class="care-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M16 3l5 3-5 3"/></svg></div>
+        <h3>Sync your store</h3>
+        <p>Connect Shopify (WooCommerce and more coming) so paid orders flow straight into Molli &mdash; ready to dispatch on the next run.</p>
+      </div>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;">
+      <a class="btn btn--accent btn--md" href="business.html">Create a business account &rarr;</a>
+      <a class="btn btn--ghost btn--md" href="bulk.html">See bulk booking</a>
+    </div>
+  </section>
+
   <!-- TIERS -->
   <section class="section divider-top light">
     <div class="tiers-head">
-      <h2>Simple pricing. <span class="accent">Starts with the size.</span></h2>
-      <span class="note">No subscriptions. No hidden fees.</span>
+      <h2>Simple pricing. <span class="accent">Same flat rate, every parcel.</span></h2>
+      <span class="note">Volume rates for shops. No subscriptions.</span>
     </div>
     <div class="tiers">
       <div class="tier"><div class="name">Small parcel</div><div class="blurb">Perfume box, phone &middot; Max 1kg</div><div class="price">&euro;7.99</div></div>
       <div class="tier featured"><div class="tier-flag">Most popular</div><div class="name">Parcel</div><div class="blurb">Shoebox, a book &middot; Max 2kg</div><div class="price">&euro;8.99</div></div>
-      <div class="tier"><div class="name">Box</div><div class="blurb">Wine case, hamper &middot; up to 10kg</div><div class="price">&euro;9.99</div></div>
+      <div class="tier"><div class="name">Box</div><div class="blurb">Wine case, hamper &middot; up to 30kg</div><div class="price">&euro;9.99</div></div>
       <div class="tier"><div class="name">Business</div><div class="blurb">10+ a week. Same per-parcel.</div><div class="price">Account</div></div>
     </div>
   </section>
@@ -455,20 +508,27 @@
     <div class="coverage" id="coverage"></div>
   </section>
 
+  <!-- THE NAME -->
+  <section class="section divider-top" style="text-align:center;">
+    <div class="mega-word mega-word--inline">m<span class="o-wheel"></span>lli</div>
+    <div class="eyebrow" style="letter-spacing:.18em; margin-top:8px;">The name</div>
+    <p style="font-size:26px; max-width:720px; margin:14px auto 0; line-height:1.4; font-weight:500; letter-spacing:-0.015em;">Named for Molly Malone &mdash; the trader who wheeled Dublin's first deliveries <span class="accent">through streets broad and narrow</span>. We just added live tracking.</p>
+  </section>
+
   <!-- CTA -->
   <section class="cta-strip">
     <div>
-      <div class="k">Ready to send something?</div>
-      <div class="h">Order by 2pm. Delivered today.</div>
+      <div class="k">Same-day delivery, built into your shop</div>
+      <div class="h">Set it up today. Live this afternoon.</div>
     </div>
-    <a class="btn btn--invert btn--lg" href="booking.html">Send a parcel &rarr;</a>
+    <a class="btn btn--invert btn--lg" href="business.html">Create a business account &rarr;</a>
   </section>
 
   <!-- FOOTER -->
   <footer class="footer">
     <div>
-      <a class="logo" href="index.html"><span class="logo-mark"><span>&rsaquo;</span></span><span class="logo-word">Molli</span></a>
-      <div class="tag">molli.ie · Dublin's same-day parcel network</div>
+      <a class="logo" href="index.html"><span class="logo-mark"><span>&rsaquo;</span></span><span class="logo-word">m<span class="o-wheel"></span>lli</span></a>
+      <div class="tag">molli.ie · Dublin's same-day parcel network<br /><span style="color:var(--muted)">Through streets broad &amp; narrow.</span></div>
     </div>
     <div class="col"><div class="col-title">Send</div><a href="booking.html">Parcels</a><a href="booking.html">Documents</a><a href="booking.html">Same-day</a><a href="pricing.html">Bulk &amp; API</a></div>
     <div class="col"><div class="col-title">Business</div><a href="pricing.html">Account pricing</a><a href="pricing.html">API &amp; integrations</a><a href="pricing.html">Case studies</a><a href="pricing.html">Contact sales</a></div>
@@ -575,7 +635,7 @@
       var grid = document.getElementById('dep-grid');
       var clock = document.getElementById('dep-clock');
       if (!grid) return;
-      var places = [['Rathmines','D6'],['Ballsbridge','D4'],['Tallaght','D24'],['Dame St','D2'],['Castleknock','D15'],['Howth','D13'],['Phibsboro','D7'],['Sandyford','D18'],['Drumcondra','D9'],['Clontarf','D3'],['Ranelagh','D6'],['Stoneybatter','D7'],['Blackrock','A94'],['Swords','K67']];
+      var places = [['Rathmines','D6'],['Ballsbridge','D4'],['Dame St','D2'],['Phibsboro','D7'],['Drumcondra','D9'],['Clontarf','D3'],['Ranelagh','D6'],['Stoneybatter','D7'],['Portobello','D8'],['Blackrock','A94'],['Rathgar','D6'],['Crumlin','D12'],['Glasnevin','D9'],['Terenure','D6W']];
       var stages = [['COLLECTED','s-collected'],['EN ROUTE','s-enroute'],['OUT FOR DELIVERY','s-out'],['DELIVERED','s-delivered']];
       function pad(n){ return n < 10 ? '0' + n : '' + n; }
       function rnd(a){ return a[Math.floor(Math.random() * a.length)]; }
